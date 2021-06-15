@@ -1,0 +1,58 @@
+{% extends "template.html" %}
+{% block content %}
+
+<div id="login" class="container-fluid">
+
+    <div class="row login-div h-100  pb-5">
+      
+      <div class="col-12 ">
+       
+            
+              <div class="row py-5 px-2 d-flex justify-content-center">
+
+                  <div class="col-12 col-sm-8 col-lg-8 col-xl-8 px-2 mx-1">
+                    
+                      
+                      <a href="{{url_for('add_image')}}" class="btn btn-secondary btn-lg btn-block my-2" role="button" aria-disabled="true">Add new image!</a>
+                      
+                   
+                    <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Pic</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {% for img in images %}
+                      <a href="#">
+                        <tr>
+                        <th scope="row" >{{ img.id }}</th>
+                        <td> <img src="{{url_for('static',filename='images/' + img.file )}}" alt="" style='max-height: 10rem; ' class="img-fluid"></td>
+                        <td>{{ img.title }}</td>
+                        <td>{{ img.category }}</td>
+                        <td><a href="{{url_for('edit_image',id=img.id)}}" style='background-color: black;font-size: 2rem;'><i class="fas fa-edit"></i></a></td>
+                        </tr>
+                      </a>
+                      {% endfor %}
+                       
+                        
+      
+                    </tbody>
+                    </table>
+
+
+                  </div>
+              </div>
+
+  
+      </div>
+     
+    </div>
+  </div>
+  
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "template.html" %}
+{% block content %}
+
+<div class="row py-5">
+
+    <div class="col-12">
+        <a href="{{url_for('register')}}" class="btn btn-secondary btn-lg btn-block my-2" role="button" aria-disabled="true">New user</a>
+                      
+                   
+        <div class="row pt-5 px-2">
+            {% for user in User %}
+            <div class="col-12  d-flex border border-dark">
+                <div class="row">
+                    <div class="col-2 px-1">
+                        <img style='max-height=7.5rem!important'src="{{ url_for('static',filename='images/'+ user.picture)}}" alt="" class="img-fluid">
+                    </div>
+                    <div class="col-8">
+                        <h6>{{ user.firstname }}</h6>
+                        <h6>{{ user.lastname }}</h6>
+                        <h6>{{ user.email }}</h6>
+
+                        <a href="{{url_for('edit_user',id=user.id)}}" style='background-color: black;font-size: 2rem;'><i class="fas fa-edit"></i></a>
+                    </div>
+
+                </div>
+                
+              
+            </div>
+
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+  
+
+{% endblock %}

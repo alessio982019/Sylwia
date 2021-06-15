@@ -1,0 +1,97 @@
+{% extends "template.html" %}
+{% block content %}
+
+<div id="login" class="container-fluid align-self-center h-100">
+
+    <div class="row login-div h-100 text-center pb-5">
+  
+      <div class="col-12 align-self-center">
+       
+  
+              <div class="row py-5 px-2 d-flex justify-content-center align-middle">
+                
+                  <div class="col-12 col-sm-8 col-lg-6 col-xl-4 px-2 mx-1 align-middle">
+                      <form class='border border-dark' enctype="multipart/form-data" method="POST">
+                      {{ form.hidden_tag() }}
+
+                          <div class="form-group " id='contact-us-title'>
+                              <h3>Enter your data</h3>
+                          </div>
+
+                          <div class="form-group">
+                              <img src="{{url_for('static',filename='images/' + image.file )}}" alt="" class="img-fluid">
+                          </div>
+                          <div class="form-group my-3">
+                                    
+                                    {{ form.title(class="form-input-email w-100", placeholder='Title') }}
+                                    
+                                    {% if form.title.errors %}
+                                        
+
+                                            {% for error in form.title.errors %}
+                                            <small id="passwordHelp" class="text-danger"><strong>Error: </strong>{{error}} </small>
+                                            {% endfor %}
+
+                                        
+                                    {% endif%}
+
+                          </div>
+                        <div class="form-group my-3">
+                             {{ form.text(class="form-input-email w-100", placeholder='Description') }}
+                                    
+                                    {% if form.text.errors %}
+                                        
+
+                                            {% for error in form.text.errors %}
+                                            <small id="passwordHelp" class="text-danger"><strong>Error: </strong>{{error}} </small>
+                                            {% endfor %}
+
+                                        
+                                    {% endif%}     
+                          </div>
+
+                          <div class="form-group my-3">
+                             {{ form.category(class="form-input-email w-100", placeholder='Category') }}
+                                    
+                                    {% if form.category.errors %}
+                                        
+
+                                            {% for error in form.category.errors %}
+                                            <small id="passwordHelp" class="text-danger"><strong>Error: </strong>{{error}} </small>
+                                            {% endfor %}
+
+                                        
+                                    {% endif%}     
+                          </div>
+                          <div class="form-group my-3">
+                          <div class="custom-file">
+                             
+                              {{ form.picture.label(class="custom-file-label", placeholder='File') }}
+                              {{ form.picture(class="custom-file-input", placeholder='File') }}
+                                    {% if form.picture.errors %}
+                                        
+
+                                            {% for error in form.picture.errors %}
+                                            <small id="passwordHelp" class="text-danger"><strong>Error: </strong>{{error}} </small>
+                                            {% endfor %}
+
+                                        
+                                    {% endif%}     
+                            </div>
+                          </div>
+                          
+                          
+                          
+                          <button type="submit" class="btn btn-black w-100" >Update</button>
+                      </form>
+                  </div>
+              </div>
+
+  
+      </div>
+     
+    </div>
+  </div>
+  
+
+{% endblock %}
