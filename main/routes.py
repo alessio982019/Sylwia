@@ -38,7 +38,7 @@ def home():
     images = Images.query.all()
     query = db.session.query(Images)
     users= User.query.all()
-    return render_template("home.html", images=images, User=users)
+    return render_template("main.html", images=images, User=users)
 
 @app.route("/login/",methods=["GET","POST"])
 def login():

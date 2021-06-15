@@ -14,6 +14,16 @@ function onClickNotVisible(category_div){
     console.log(ref_div);
 
 };
+
+(function () {
+    var body = document.body,
+            e = document.documentElement,
+            scrollPercent;
+    $(window).unbind("scroll").scroll(function () {
+        scrollPercent = 100 * $(window).scrollTop() / ($(document).height() - $(window).height()) + 5;
+        body.style.backgroundPosition = "0px " + scrollPercent + "%";
+    });
+})();
 var window_top = $(window).scrollTop();
     
 // $(window).scroll(function() {    

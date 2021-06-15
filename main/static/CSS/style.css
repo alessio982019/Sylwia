@@ -9,7 +9,7 @@
       scroll-behavior: smooth;
     }
     nav{
-        background-color: rgb(255, 255, 255);
+        background-color: transparent;
 
         z-index: 10;
     }
@@ -43,10 +43,7 @@ p{
       text-decoration: none;
       background-color: rgba(0, 0, 0, 0.274)!important;
   }
-  h1 {
-    font-family: 'Cinzel', serif;
-    font-size: 5rem;
-  }
+
     /* a{
         color: white!important;
     } */
@@ -54,9 +51,7 @@ p{
         color: white!important;
     }
 
-    #about{
-      background-color: rgb(214, 214, 214);
-    }
+
 .hidden{
   display: none!important;
 }
@@ -136,29 +131,64 @@ input:focus {outline:none!important;}
     
     
 }
+#pictures-table{
+  background-color: white;
+}
+#about{
+  background-color: white;
+}
+#gallery{
+  background-color: white;
+  margin-top: 25rem!important;
+}
 
+#contact{
+  background-color: white;
+  margin-top: 15rem!important;
+}
+#main-container{
+  background-color: rgba(255, 255, 255, 0.75);
+  
+  border-radius: 15px;
+}
+body{
+ 
+  background: black url(../images/background.jpg) center center no-repeat;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-position:center;
+  background-position: center center;
+  background-size: cover;
+}
 
+#main-content{
+  background-color: #ffffff;
+}
 .btn:hover:after{
     position:absolute;
     content:'';
-    width: 50%;
+    width: 75%;
     height: 0.175rem;
     background-color: red;
     left: 0px;
-    bottom: 5px;
-    margin: 0 25% 0 25%;
+    bottom: 2px;
+    margin: 0 12.5% 0 12.5%;
     box-sizing: border-box;
     transition: 0.3s;
     
 }
 
-
-
+table a{
+  color: black;
+}
+#user-table a{
+  color: black;
+}
 form{
-    background-color:rgba(255, 255, 255, 0.699);
+    background-color:rgba(255, 255, 255, 1);
     padding: 2rem;
     color: white;
-    opacity: .7;
+    
     box-shadow:
     0 5.8px 14.9px rgba(0, 0, 0, 0.038),
     0 15.9px 41.3px rgba(0, 0, 0, 0.055),
@@ -250,22 +280,44 @@ display: none!important;
 
   
 }
+
+.row{
+  margin-left: 0!important;
+  margin-right: 0!important;
+}
 #facebook{
     color: blue!important;
 }
-@media (min-width: 576px) { 
 
+
+h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+}
+
+
+@media (min-width: 576px) { 
+  #about-img{
+    width: 50%!important;
+  }
+  h1{
+    font-size: 2.5rem!important;
+  }
 
 }
 
 
 @media (min-width: 768px) { 
-
+  h1{
+    font-size: 3rem!important;
+  }
  }
 
 
 @media (min-width: 992px) { 
-
+  h1{
+    font-size: 3.5rem!important;
+  }
 }
 
 
@@ -276,6 +328,10 @@ display: none!important;
         
         width:100%;
         vertical-align: middle;
+    }
+
+    h1{
+      font-size: 4rem!important;
     }
  }
 
