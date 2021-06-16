@@ -1,0 +1,41 @@
+{% extends "template.html" %}
+{% block content %}
+
+
+
+
+ <!-- About me -->
+ <div class="main-container w-100 mb-5  " id="about" >
+            
+    <div class="row text-center pb-5 " >
+        <div class="col mt-5 mb-mt-1">
+          <h1>Know more about me</h1>
+        </div>
+      </div>
+  
+      <div class="row d-flex justify-content-center  pb-3   mb-2 px-1 ">
+        <div class="col-12 col-sm-12 col-md-8 align-middle" >
+            <img src="{{ url_for('static', filename='/images/about_me.jpg') }}" alt="" id='about-img' class="pull-left w-100  pb-5 pb-sm-5 pr-sm-5 " >
+            <p id='about-content'class=''>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently 
+                with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-8 align-middle my-3" style='padding:0!important'>
+
+          <button class="btn w-100" id='btn-contact'>Contact me</button>
+        </div>
+
+
+      </div>
+  
+     
+</div>
+
+
+
+{% endblock %}

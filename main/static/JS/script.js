@@ -15,32 +15,49 @@ function onClickNotVisible(category_div){
 
 };
 
-(function () {
-    var body = document.body,
-            e = document.documentElement,
-            scrollPercent;
-    $(window).unbind("scroll").scroll(function () {
-        scrollPercent = 100 * $(window).scrollTop() / ($(document).height() - $(window).height()) + 5;
-        body.style.backgroundPosition = "0px " + scrollPercent + "%";
-    });
-})();
+
+// (function () {
+//     var body = document.body,
+//             e = document.documentElement,
+//             scrollPercent;
+//     $(window).unbind("scroll").scroll(function () {
+//         scrollPercent = 100 * $(window).scrollTop() / ($(document).height() - $(window).height()) + 5;
+//         body.style.backgroundPosition = "0px " + scrollPercent + "%";
+//     });
+// })();
 var window_top = $(window).scrollTop();
     
-// $(window).scroll(function() {    
-//     var scroll = $(window).scrollTop();
+$(window).scroll(function() {    
+    var scroll = $(window).scrollTop();
     
-//     var objectSelect = $("#about");
-//     var objectPosition = objectSelect.offset().top;
-//     console.log(scroll + "  " + objectPosition)
-//     var home_div = document.getElementById("home");
-//     if (scroll > objectPosition) {
-//         console.log("change");
+    var objectSelect = $("#background-logo");
+    var objectPosition = objectSelect.offset().top - 100;
+    var nav = document.getElementById('container-nav');
+    var a = document.getElementById('container-nav').getElementsByTagName('a');
+    var drop_menu = document.getElementById('dropdown-menu');
+    if (scroll > objectPosition) {
+        console.log(scroll + " " + objectPosition)
+        for (var i = 0; i < a.length; i++) {
+            var elem = a[i];
+            elem.classList.remove("text-light");
+            elem.classList.add("text-dark");
+        };
         
-//         home_div.classList.add("position-absolute");
-//     } else {
-//         home_div.classList.remove("position-absolute");
-//     }
-// });
+        drop_menu.classList.remove('menu-light');
+        nav.classList.add("bg-white");
+    } else {
+
+        nav.classList.remove("bg-white");
+        drop_menu.classList.add('menu-light');
+        
+        for (var i = 0; i < a.length; i++) {
+            var elem = a[i];
+            elem.classList.remove("text-dark");
+            elem.classList.add("text-light");
+         
+        };
+    }
+});
 $(document).ready(function(){
    
     // if (window_top > div_top) {

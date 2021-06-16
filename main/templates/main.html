@@ -4,51 +4,109 @@
 
 <div class="row d-flex justify-content-center  " id='main-external' >
 
-    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8  py-5 px-1 px-sm-5"  id='home' >
-        <div class="" style='height: 100vh;background-color: transparent;' >
-           
+    <div class="col-12 pb-5"  style='padding-right:0!important;padding-left:0!important ' id='home' >
+        <div class="d-flex align-items-end" style='height: 100vh;background-color: transparent;' >
+           <img src="{{url_for('static',filename='images/logo.png')}}" style='opacity:0.9' id='background-logo' alt="" class="img-fluid">
         </div>
     </div>
 
         <!-- About me -->
-    <div class="main-container w-100 mb-5" id="about">
-            
-            <div class="row text-center " >
-                <div class="col py-5">
-                  <h1>Know more about me</h1>
-                </div>
-              </div>
-          
-              <div class="row d-flex justify-content-center  pb-3   mb-2 px-1 ">
-                <div class="col-12 col-sm-10 col-md-8">
-                    <img src="{{ url_for('static', filename='/images/about_me.jpg') }}" alt="" id='about-img' class="pull-left w-100  pr-sm-5" >
-                    <p class='py-5   '>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently 
-                        with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div>
-
-
-              </div>
-          
-             
-    </div>
+ 
 
      <!-- End about me -->
+<!-- 
+    <div class="row w-100">
+      <div class="col-12 bg-white text-center">
+        <h1>People</h1>
+
+        <div class="w-100  bg-dark" style='height: 40rem; overflow: hidden;' id=people-img >
+          <img src="{{url_for('static',filename='images/people_1.jpg')}}" alt="" class="img-fluid">
+          
+        </div>
+      </div>
+    </div> -->
+
 
 
              <!-- Portfolio -->
-<div class="main-container w-100 my-5" id="gallery">
+
+
+
+             <div id="people-section" class='position-relative text-center gallery-preview my-5 py-5' >
+               <img src="{{ url_for('static',filename='images/people_1.jpg') }}" id='people-img' alt="">
+               <div class="centered"><h1>People</h1></div>
+               <div class="w-100 position-absolute h-100 " style='z-index: 15; top: 0; background-color: rgba(0, 0, 0, 0.4)'>
+                
+                
+                
+                <a href="#" class="btn btn-primary btn-lg active" role="button"id='btn-people' aria-pressed="true">See more!</a>
+               
+              
+       
+                  
+                
+               </div>
+             </div>
+
+
+
+
+             <div id="business" class='position-relative text-center gallery-preview my-5' >
+              <img src="{{ url_for('static',filename='images/business_1.jpg') }}" id='people-img' alt="">
+              <div class="centered"><h1>Business</h1></div>
+              <div class="w-100 position-absolute h-100 " style='z-index: 15; top: 0; background-color: rgba(0, 0, 0, 0.4)'>
+               
+               
+               
+               <a href="#" class="btn btn-primary btn-lg active" role="button"id='btn-people' aria-pressed="true">See more!</a>
+              
+             
+      
+                 
+               
+              </div>
+            </div>
+
+            <div id="events" class='position-relative text-center gallery-preview my-5' >
+              <img src="{{ url_for('static',filename='images/event_5.jpg') }}" id='people-img' alt="">
+              <div class="centered"><h1>Events</h1></div>
+              <div class="w-100 position-absolute h-100 " style='z-index: 15; top: 0; background-color: rgba(0, 0, 0, 0.4)'>
+               
+               
+               
+               <a href="#" class="btn btn-primary btn-lg active" role="button"id='btn-people' aria-pressed="true">See more!</a>
+              
+             
+      
+                 
+               
+              </div>
+            </div>
+
+
+            <div id="food" class='position-relative text-center gallery-preview my-5' >
+              <img src="{{ url_for('static',filename='images/food_5.jpg') }}" id='people-img' alt="">
+              <div class="centered"><h1>Food</h1></div>
+              <div class="w-100 position-absolute h-100 " style='z-index: 15; top: 0; background-color: rgba(0, 0, 0, 0.4)'>
+               
+               
+               
+               <a href="#" class="btn btn-primary btn-lg active" role="button"id='btn-people' aria-pressed="true">See more!</a>
+              
+             
+      
+                 
+               
+              </div>
+            </div>
+<!-- <div class="main-container w-100 my-5" id="gallery">
             
     <div class="container-fluid text-center py-2 py-md-5 mt-5">
 
-        <h1>Portflio</h1>
+        <h1>Portfolio</h1>
     </div>
     <div class="row mb-5">
 
-        <!-- Events -->
           <div class="col-12 col-sm-6 col-xl-3 p-3 text-center category-pic" reference_div = 'events-pic' id='div-event'>
             <h5 class='py-3'>Events</h5>
   
@@ -58,7 +116,7 @@
   
           </div>
   
-  <!-- Events pics-->
+
           <div class="d-none" id='events-pic'>
             <div class="row d-flex justify-content-center " id='events'>
   
@@ -96,9 +154,7 @@
                 
             </div>
           </div>
-  
-        <!-- end pics-->
-    <!-- Business -->
+
         <div class="col-12 col-sm-6 col-xl-3 p-3  text-center category-pic" id='div-business' reference_div = 'business-pic'>
           <h5 class='py-3'>Business</h5>
   
@@ -108,7 +164,7 @@
   
         </div>
   
-        <!-- Business pics-->
+
         <div class="d-none" id='business-pic'>
   
   
@@ -147,10 +203,7 @@
           </div>
         
         </div>
-  
-    <!-- end business pic -->
-  
-          <!-- Food -->
+
           <div class="col-12 col-sm-6 col-xl-3 p-3  text-center category-pic" id='div-food' reference_div = 'food-pic'>
             <h5 class='py-3'>Food</h5>
   
@@ -158,8 +211,7 @@
             <p class='pt-3'>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
               Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
           </div>
-  
-          <!-- Food pics-->
+
           <div class="d-none" id='food-pic'>
           <div class="row pt-5 d-flex justify-content-center" id='food'>
             <div class="col-12 d-flex justify-content-end px-2">
@@ -217,7 +269,7 @@
           </div>
           </div>
   
-          <!-- People -->
+         
           <div class="col-12 col-sm-6 col-xl-3 p-3  text-center category-pic" id='div-people' reference_div = 'people-pic'>
             <h5 class='py-3'>People</h5>
   
@@ -226,7 +278,7 @@
               Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
           </div>
   
-          <!-- People pics-->
+  
           <div class="d-none" id='people-pic'>
             <div class="row pt-5 d-flex justify-content-center">
               <div class="col-12 d-flex justify-content-end px-2">
@@ -290,7 +342,7 @@
       </div>
       
          
-</div>
+</div>  -->
 
  <!-- End Portfolio -->
 

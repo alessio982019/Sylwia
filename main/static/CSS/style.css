@@ -16,28 +16,50 @@
     #container-nav{
       z-index:10;
     }
-    #dropdown-menu{
-      background-color: rgb(255, 255, 255);
+    /* #dropdown-menu{
+      background-color: rgba(0, 0, 0, 0.336);
+      color: white!important;
 
-    }
-    nav a{
-      font-family: 'Cinzel', serif;
-      color: black;
+    } */
 
-    }
-    nav a:hover{
-      font-family: 'Cinzel', serif;
-      color: black;
-
+    .menu-dark{
+      background-color: rgba(0, 0, 0, 0.336);
+      color: white!important;
     }
 
+    .menu-light{
+      background-color: rgba(255, 255, 255, 0.0);
+      color: black!important;
+    }
+    /* #dropdown-menu a{
     
-p{
-  font-family: 'Cinzel', serif;
+      color: white!important;
+
+    } */
+    .black-text{
       color: black;
-      word-spacing: .2rem;
-      letter-spacing: .2rem;
+    }
+    .black-text{
+      color: rgb(255, 255, 255);
+    }
+    /* nav a{
+      font-family: 'Cinzel', serif;
+      color: white;
+
+    } */
+    /* nav a:hover{
+      font-family: 'Cinzel', serif;
+      color: black;
+
+    } */
+#container-nav{
+  transition: .4s;
 }
+    #company-name{
+      font-family: 'Parisienne', cursive;
+      font-size: 2.5rem;
+    }
+
     .dropdown-item:hover {
       color: white;
       text-decoration: none;
@@ -135,7 +157,16 @@ input:focus {outline:none!important;}
   background-color: white;
 }
 #about{
+  color:white;
+  padding-top:5rem;
+}
+#about-content{
+  background-color:rgba(0, 0, 0, 0.5);
+  padding:1rem;
+}
+#btn-contact{
   background-color: white;
+  font-family: 'Montserrat', sans-serif;
 }
 #gallery{
   background-color: white;
@@ -151,9 +182,18 @@ input:focus {outline:none!important;}
   
   border-radius: 15px;
 }
+/* 
+#people-img{
+  background: black url(../images/people_1.jpg) center center no-repeat;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-position:center;
+  background-position: center center;
+  background-size: cover;
+} */
 body{
  
-  background: black url(../images/background.jpg) center center no-repeat;
+  background: black url(../images/background_flower.jpg) center center no-repeat;
   background-repeat:no-repeat;
   background-attachment:fixed;
   background-position:center;
@@ -169,7 +209,7 @@ body{
     content:'';
     width: 75%;
     height: 0.175rem;
-    background-color: red;
+    background-color: #cc0102;
     left: 0px;
     bottom: 2px;
     margin: 0 12.5% 0 12.5%;
@@ -291,17 +331,84 @@ display: none!important;
 
 
 h1 {
-  font-family: 'Cinzel', serif;
+  font-family: 'Exo 2', sans-serif;
   font-size: 2rem;
 }
+
+p{
+  font-family: 'Montserrat', sans-serif;
+     
+      font-size: .8rem;
+      word-spacing: .3rem;
+      letter-spacing: .2rem;
+      line-height: 1.25rem;
+}
+
+
+#about-img{
+  width: 100%;
+}
+
+.gallery-preview{
+  position:relative;
+  overflow:hidden;
+  height: 30rem;
+  text-align: center;
+  color: white;
+  opacity: 0.9;
+  background-color: black;
+  z-index:2;
+  margin-top:10rem!important;
+}
+.gallery-preview img{
+  width: 100%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+.gallery-preview a{
+
+  width: 25%;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -130%);
+  background-color: transparent!important;
+  border-color: white;
+  border:none!important;
+  opacity: 0.8;
+  font-size: 2rem;
+
+}
+.gallery-preview h1{
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: 3rem;;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+ z-index: 1000;
+
+}
+/* #btn-people:hover{
+  cursor: pointer;
+  border-color: #cd0001;
+  opacity: 0.5;
+} */
+
 
 
 @media (min-width: 576px) { 
   #about-img{
-    width: 50%!important;
+    width: 100%!important;
   }
   h1{
     font-size: 2.5rem!important;
+  }
+  p {
+    font-size: 1rem;
   }
 
 }
@@ -311,12 +418,19 @@ h1 {
   h1{
     font-size: 3rem!important;
   }
+
+  #about-img{
+    width: 75%!important;
+  }
  }
 
 
 @media (min-width: 992px) { 
   h1{
     font-size: 3.5rem!important;
+  }
+  #about-img{
+    width: 50%!important;
   }
 }
 
