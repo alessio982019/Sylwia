@@ -1,173 +1,131 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        {{ flask_util_js.js }}
-   
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <script src="https://kit.fontawesome.com/fc90696665.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">
-
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Poppins:wght@600&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Parisienne&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/style.css') }}">
-    <title>Sylwia  - Fotograf Warszawa</title>
-  </head>
-
-  <body  >
-    <div class="position-fixed w-100" id='container-nav'>
-
-    
-      <nav class="navbar navbar-expand-lg  w-100 px-md-5 px-md-5 px-3 py-2 py-md-4">
-        
-        <a class="navbar-brand text-light" id='company-name' href="#home">Smotion Phography</a>
-
-
-        <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon "></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto ">
-            {% if url_for(request.endpoint) == '/home/' or url_for(request.endpoint) == '' %}
-            <li class="nav-item px-3 py-2">
-           
-              <a class="nav-link text-light" href="#home">Home<span class="sr-only">(current)</span></a>
-
-              
-            </li>
-            <li class="nav-item px-3 py-2">
-              <a class="nav-link text-light" href="{{url_for('about')}}">About me</a>
-            </li>
-           
-            <li class="nav-item dropdown px-3 py-2">
-              <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Gallery
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id='dropdown-menu'>
-                <a class="dropdown-item text-light" href="#events">Events</a>
-                <a class="dropdown-item text-light" href="#food">Food</a>
-                <a class="dropdown-item text-light"  href="#business">Business</a>
-                <a class="dropdown-item text-light" href="#people">People</a>
-              </div>
-            </li>
-            <li class="nav-item px-3 py-2">
-              <a class="nav-link text-light" href="#contact">Contact</a>
-            </li>
-
-                    {% if current_user.is_authenticated %}
-                      
-                        <li class="nav-item px-3 py-2">
-                            <a class="nav-link text-light" href="{{ url_for('pictures')}}">Photos</a>
-                        </li>
-                        <li class="nav-item px-3 py-2">
-                            <a class="nav-link text-light" href="{{ url_for('users')}}">Users</a>
-                        </li>
-                        <li class="nav-item px-3 py-2">
-                            <a class="nav-link text-light" href="{{ url_for('logout')}}">Logout</a>
-                        </li>
-                      
-                    {% endif %}
-
-            {% else %}
-
-            <li class="nav-item px-3 py-2">
-           
-              <a class="nav-link text-light" href="{{url_for('home')}}">Home<span class="sr-only">(current)</span></a>
-
-              
-            </li>
-            <li class="nav-item px-3 py-2">
-              <a class="nav-link text-light" href="{{url_for('about')}}">About me</a>
-            </li>
-           
-
-            
-
-                    {% if current_user.is_authenticated %}
-                      
-                        <li class="nav-item px-3 py-2">
-                            <a class="nav-link text-light" href="{{ url_for('pictures')}}">Photos</a>
-                        </li>
-                        <li class="nav-item px-3 py-2">
-                            <a class="nav-link text-light" href="{{ url_for('users')}}">Users</a>
-                        </li>
-                        <li class="nav-item px-3 py-2">
-                            <a class="nav-link text-light" href="{{ url_for('logout')}}">Logout</a>
-                        </li>
-                      
-                    {% endif %}
-
-
-
-            {% endif %}
-          </ul>
-
-          
-        </div>
-      </nav>
-
-    </div>
-        <!-- MESSAGES FROM ROUTES -->
-
-   
-        
-    {% with messages = get_flashed_messages(category_filter=["success"]) %}
-
-    {% if messages %}
-
-            {% for msg in  messages %}
-            
-            <div class="alert alert-success mb-3 w-100 " id = "flashMsg" style="text-align: center;">{{msg}}</div>
-            {% endfor %}
-            
-    {% endif %}
-
-{% endwith %}
-
-
-{% with messages = get_flashed_messages(category_filter=["error"]) %}
-
-    {% if messages %}
-
-            {% for msg in  messages %}
-            
-            <div class="alert alert-danger mb-3 w-100" style="text-align: center;">{{msg}}</div>
-            {% endfor %}
-            
-    {% endif %}
-
-{% endwith %}
-
-<!-- END MESSAGES FROM ROUTES -->
-
-{% block content %}
-{% endblock %}
-
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
-    <script src="{{ url_for('static', filename='/JS/script.js') }}"></script>
-  </body>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {{ flask_util_js.js }}
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <script src="https://kit.fontawesome.com/fc90696665.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Poppins:wght@600&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Parisienne&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/style.css') }}">
+  <title>Smotion Phography - Warszawa Fotograf</title>
+</head>
+<body>
+  <div class="position-fixed w-100" id='container-nav'>
+    <nav class="navbar navbar-expand-lg  w-100 px-md-5 px-md-5 px-3 py-2 py-md-4">
+      {% if url_for(request.endpoint) == '/home/' or url_for(request.endpoint) == '' %}
+      <a class="navbar-brand text-light" id='company-name' href="#home">Smotion Phography</a>
+      {% else %}
+      <a class="navbar-brand text-light" id='company-name' href="{{url_for('home')}}">Smotion Phography</a>
+      {% endif %}
+      <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon "></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto ">
+          {% if url_for(request.endpoint) == '/home/' or url_for(request.endpoint) == '' %}
+          <li class="nav-item px-3 py-2">
+            <a class="nav-link text-light" href="#home">Home<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item px-3 py-2">
+            <a class="nav-link text-light" href="{{url_for('about')}}">About me</a>
+          </li>
+          <li class="nav-item dropdown px-3 py-2">
+            <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Gallery
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id='dropdown-menu'>
+              <a class="dropdown-item text-light" href="{{url_for('gallery')}}">All</a>
+              <a class="dropdown-item text-light" href="#events">Events</a>
+              <a class="dropdown-item text-light" href="#food">Food</a>
+              <a class="dropdown-item text-light" href="#business">Business</a>
+              <a class="dropdown-item text-light" href="#people">People</a>
+            </div>
+          </li>
+          <li class="nav-item px-3 py-2">
+            <a class="nav-link text-light" href="#contact">Contact</a>
+          </li>
+          {% if current_user.is_authenticated %}
+          <li class="nav-item px-3 py-2">
+            <a class="nav-link text-light" href="{{ url_for('pictures')}}">Photos</a>
+          </li>
+          <li class="nav-item px-3 py-2">
+            <a class="nav-link text-light" href="{{ url_for('users')}}">Users</a>
+          </li>
+          <li class="nav-item px-3 py-2">
+            <a class="nav-link text-light" href="{{ url_for('logout')}}">Logout</a>
+          </li>
+          {% endif %}
+          {% else %}
+          <li class="nav-item px-3 py-2">
+            <a class="nav-link text-light" href="{{url_for('home')}}">Home<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item px-3 py-2">
+            <a class="nav-link text-light" href="{{url_for('about')}}">About me</a>
+          </li>
+          {% if current_user.is_authenticated %}
+          <li class="nav-item px-3 py-2">
+            <a class="nav-link text-light" href="{{ url_for('pictures')}}">Photos</a>
+          </li>
+          <li class="nav-item px-3 py-2">
+            <a class="nav-link text-light" href="{{ url_for('users')}}">Users</a>
+          </li>
+          <li class="nav-item px-3 py-2">
+            <a class="nav-link text-light" href="{{ url_for('logout')}}">Logout</a>
+          </li>
+          {% endif %}
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <!-- MESSAGES FROM ROUTES -->
+  {% with messages = get_flashed_messages(category_filter=["success"]) %}
+  {% if messages %}
+  {% for msg in  messages %}
+  <div class="alert alert-success mb-3 w-100 " id="flashMsg" style="text-align: center;">{{msg}}</div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+  {% with messages = get_flashed_messages(category_filter=["error"]) %}
+  {% if messages %}
+  {% for msg in  messages %}
+  <div class="alert alert-danger mb-3 w-100" style="text-align: center;">{{msg}}</div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+  <!-- END MESSAGES FROM ROUTES -->
+  {% block content %}
+  {% endblock %}
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+  <script src="{{ url_for('static', filename='/JS/script.js') }}"></script>
+</body>
 </html>
