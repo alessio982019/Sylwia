@@ -1,0 +1,88 @@
+{% extends "template.html" %}
+{% block content %}
+{% set counter = namespace(value=0)  %}
+{%  if current_user.is_authenticated %}
+<div class="row pt-5">
+    <div class="col-12 pt-5 text-center ">
+        <a href="#" class='text-white' id='add-new-image-link' >Add a new image</a>
+    </div>
+</div>
+
+<div class="row  justify-content-center d-none" id='add-image-container'>
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+        <form class='bg-light text-dark text-center' id='gallery-form text-center' enctype="multipart/form-data" method="POST">
+            {{ form.hidden_tag() }}
+            <h1>Add a new image</h1>
+            <div class="form-group my-3">
+                {{ form.title(class="form-input-email w-100", placeholder='Title') }}
+                {% if form.title.errors %}
+                {% for error in form.title.errors %}
+                <small id="passwordHelp" class="text-danger"><strong>Error: </strong>{{error}} </small>
+                {% endfor %}
+                {% endif%}
+            </div>
+            <div class="form-group my-3">
+                {{ form.text(class="form-input-email w-100", placeholder='Description') }}
+                {% if form.text.errors %}
+                {% for error in form.text.errors %}
+                <small id="passwordHelp" class="text-danger"><strong>Error: </strong>{{error}} </small>
+                {% endfor %}
+                {% endif%}
+            </div>
+            <div class="form-group my-3">
+                {{ form.category(class="form-input-email w-100", placeholder='Category') }}
+                {% if form.category.errors %}
+                {% for error in form.category.errors %}
+                <small id="passwordHelp" class="text-danger"><strong>Error: </strong>{{error}} </small>
+                {% endfor %}
+                {% endif%}
+            </div>
+            <div class="form-group my-3">
+                <label class="custom-file-label form-input-email " style='position:absolute;' for="picture"
+                    placeholder="File">Image</label>
+                <input class="custom-file-input form-input-email" id="picture" name="picture" placeholder="File"
+                    type="file">
+            </div>
+            <button type="submit" class="btn btn-black w-100 draw meet">Add</button>
+        </form>
+    </div>
+</div>
+{%  endif %}
+<div class="row d-flex justify-content-center" id='container-profile'>
+    <div class="col-12 col-sm-10 col-md-8">
+    <div class="row my-5 d-flex justify-content-center border-bottom border-white" id='menu-gallery'>
+
+        <a href="{{url_for('gallery',category='Business')}}" class='px-2 px-sm-3 px-md-4 px-xl-5 py-2'>Business</a>
+        <a href="{{url_for('gallery',category='Events')}}" class='px-2 px-sm-3 px-md-4 px-xl-5 py-2'>Events</a>
+        <a href="{{url_for('gallery')}}" class='px-2 px-sm-3 px-md-4 px-xl-5 py-2'>All</a>
+        <a href="{{url_for('gallery',category='People')}}" class='px-2 px-sm-3 px-md-4 px-xl-5 py-2'>People</a>
+        <a href="{{url_for('gallery',category='Food')}}" class='px-2 px-sm-3 px-md-4 px-xl-5 py-2'>Food</a>
+    </div>
+    <div class="row d-flex justify-content-center">
+    {% for image in images %}
+
+        {% if counter.value == 2 %}
+            <div class="col-12" id='img-profile-box'>
+            
+            {% set counter.value = 0 %}
+        {% else %}
+            <div class="col-6" id='img-profile-box'>
+
+            {% set counter.value = counter.value + 1  %}
+        {% endif %}
+
+                    <img src="{{url_for('static',filename= 'images/' + image.file )}}" alt="{{counter.value}}" class="img-fluid p-1" id="img-profile">
+                    
+                    {% if current_user.is_authenticated %}
+                    <a href="{{url_for('edit_image', id = image.id)}}" id='edit-img-link'>
+                        <div id="edit-img">
+                            <i class="fas fa-edit text-white"></i>
+                        </div>
+                    </a>
+                    {% endif %}
+            </div>
+    {% endfor %}
+</div>
+</div>
+</div>
+{% endblock %}

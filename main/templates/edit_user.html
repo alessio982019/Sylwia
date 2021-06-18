@@ -1,8 +1,6 @@
 {% extends "template.html" %}
 {% block content %}
-
 <div id="login" class="container-fluid align-self-center h-100">
-
     <div class="row login-div h-100 text-center pb-5">
   
       <div class="col-12 align-self-center">
@@ -14,10 +12,7 @@
                     <a href="{{url_for('home')}}" class="btn btn-outline-dark btn-lg bg-white btn-block my-2" role="button" aria-disabled="true">Home</a>
       
                       <form class='border border-dark' enctype="multipart/form-data" method="POST">
-
-
                       {{ form.hidden_tag() }}
-
                           <div class="form-group " id='contact-us-title'>
                               <h3>Update user</h3>
                           </div>
@@ -32,14 +27,11 @@
                                     
                                     {% if form.firstname.errors %}
                                         
-
                                             {% for error in form.firstname.errors %}
                                             <small id="passwordHelp" class="text-danger"><strong>Error: </strong>{{error}} </small>
                                             {% endfor %}
-
                                         
                                     {% endif%}
-
                                    
                           </div>
                         <div class="form-group my-3">
@@ -47,15 +39,12 @@
                                     
                                     {% if form.lastname.errors %}
                                         
-
                                             {% for error in form.lastname.errors %}
                                             <small id="passwordHelp" class="text-danger"><strong>Error: </strong>{{error}} </small>
                                             {% endfor %}
-
                                         
                                     {% endif%}     
                           </div>
-
                               </div>
                           </div>
                           <div class="form-group my-3">
@@ -81,12 +70,10 @@
                       </form>
                   </div>
               </div>
-
   
       </div>
      
     </div>
   </div>
   
-
 {% endblock %}

@@ -1,8 +1,6 @@
 {% extends "template.html" %}
 {% block content %}
-
 <div id="login" class="container-fluid w-100 align-self-center h-100">
-
     <div class="row login-div h-100 text-center pb-5">
   
       <div class="col-12 align-self-center" style='padding:0!important'>
@@ -13,7 +11,6 @@
                   <div class="col-12 col-sm-8 col-lg-6 col-xl-4 px-md-2 mx-md-1 align-middle" style='padding:0!important'>
                       <form class='border border-dark' enctype="multipart/form-data" method="POST">
                       {{ form.hidden_tag() }}
-
                           <div class="form-group " id='contact-us-title'>
                               <h3>Add a new admin</h3>
                           </div>
@@ -23,14 +20,11 @@
                                     
                                     {% if form.firstname.errors %}
                                         
-
                                             {% for error in form.firstname.errors %}
                                             <small id="passwordHelp" class="text-danger"><strong>Error: </strong>{{error}} </small>
                                             {% endfor %}
-
                                         
                                     {% endif%}
-
                                    
                           </div>
                         <div class="form-group my-3">
@@ -38,25 +32,20 @@
                                     
                                     {% if form.lastname.errors %}
                                         
-
                                             {% for error in form.lastname.errors %}
                                             <small id="passwordHelp" class="text-danger"><strong>Error: </strong>{{error}} </small>
                                             {% endfor %}
-
                                         
                                     {% endif%}     
                           </div>
-
                             <div class="form-group my-3">
                                 {{ form.email(class="form-input-email w-100", placeholder='Email') }}
                                     
                                     {% if form.email.errors %}
                                         
-
                                             {% for error in form.email.errors %}
                                             <small id="passwordHelp" class="text-danger"><strong>Error: </strong>{{error}} </small>
                                             {% endfor %}
-
                                         
                                     {% endif%}     
                           </div>
@@ -65,11 +54,9 @@
                                     
                                     {% if form.password.errors %}
                                         
-
                                             {% for error in form.password.errors %}
                                             <small id="passwordHelp" class="text-danger"><strong>Error: </strong>{{error}} </small>
                                             {% endfor %}
-
                                         
                                     {% endif%} 
                             </div>
@@ -78,11 +65,9 @@
                                     
                                     {% if form.confirm_password.errors %}
                                         
-
                                             {% for error in form.confirm_password.errors %}
                                             <small id="passwordHelp" class="text-danger"><strong>Error: </strong>{{error}} </small>
                                             {% endfor %}
-
                                         
                                     {% endif%} 
                             </div>
@@ -93,11 +78,9 @@
                               {{ form.picture(class="custom-file-input", placeholder='File') }}
                                     {% if form.picture.errors %}
                                         
-
                                             {% for error in form.picture.errors %}
                                             <small id="passwordHelp" class="text-danger"><strong>Error: </strong>{{error}} </small>
                                             {% endfor %}
-
                                         
                                     {% endif%}     
                             </div>
@@ -106,12 +89,10 @@
                       </form>
                   </div>
               </div>
-
   
       </div>
      
     </div>
   </div>
   
-
 {% endblock %}

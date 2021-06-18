@@ -17,7 +17,6 @@ from werkzeug.utils import secure_filename
 app.config["STRIPE_PUBLIC_KEY"] = "stripe_public_key"
 app.config["STRIPE_SECRET_KEY"] = "stripe_secret_key"
 stripe.api_key = app.config["STRIPE_SECRET_KEY"]
-
 def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
     _,f_ext = os.path.splitext(form_picture.filename)
@@ -25,13 +24,11 @@ def save_picture(form_picture):
     picture_path  = os.path.join(app.root_path,"static/images/",picture_fn)
     
     i = Image.open(form_picture)
-
     i.save(picture_path)
     newPic = Image.open(picture_path)
    
     newPic.save(picture_path)
     return picture_fn
-
 @app.route("/",methods=["GET","POST"])
 @app.route("/home/",methods=["GET","POST"])
 def home(): 
@@ -39,14 +36,12 @@ def home():
     query = db.session.query(Images)
     users= User.query.all()
     return render_template("main.html", images=images, User=users)
-
 @app.route("/login/",methods=["GET","POST"])
 def login():
     form = LoginForm()
     # if not current_user.is_authenticated:
     #     flash('You are not the admin!','error')
     #     return redirect(url_for("home"))
-
     if request.method == 'POST':
         
         if form.validate_on_submit():
@@ -63,10 +58,45 @@ def login():
             for error in form.errors:
                 print(error)
     return render_template("login.html",form=form)
-
-@app.route("/about/",methods=["GET","POST"])
+@app.route("/about/")
 def about():
     return render_template('about.html')
+@app.route("/gallery/<category>",methods=["GET","POST"])
+@app.route("/gallery/",methods=["GET","POST"])
+def gallery(category = None):
+    if category == None:
+        images = Images.query.all()
+    else:
+        images = Images.query.filter(Images.category == category).all()
+    form = addPost()
+    # if request.method=="GET":
+    #     if not current_user.is_authenticated:
+    #         flash('You need an account!','error')
+    #         return redirect(url_for("login"))
+    
+    if request.method =="POST":
+        if form.validate_on_submit():
+            title = form.title.data
+            text  =form.text.data
+            category = form.category.data
+            picture = save_picture(form.picture.data)
+            new_image = Images(   
+                            title=title,
+                            description = text,
+                            file=picture,
+                            category=category,
+                            )
+            db.session.add(new_image)
+            db.session.commit()
+            flash("New post created: {}".format(title), "success")
+            return redirect(url_for("pictures"))
+        elif form.validate_on_submit()==False:
+            flash("Error! Post not created", "error")
+            for fieldName, errorMessages in form.errors.items():
+                for err in errorMessages:
+                    print(err)
+            return render_template("add_pic.html", form=form,images=images)
+    return render_template('gallery.html',images=images,form=form)
 @app.route("/register/",methods=["GET","POST"])
 def register():
     form = RegistrationForm()
@@ -94,10 +124,8 @@ def register():
             flash("An error occurred while creating the account.", "error")
             return render_template("register.html",title="Register",form=form)
     return render_template("register.html",title="Register",form=form)
-
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
-
 @app.route("/add_image/",methods=["GET","POST"])
 def add_image():
     form = addPost()
@@ -118,40 +146,28 @@ def add_image():
                             file=picture,
                             category=category,
                             )
-
             db.session.add(new_image)
             db.session.commit()
             flash("New post created: {}".format(title), "success")
-            return redirect(url_for("pictures"))
-
+            return redirect(url_for("gallery"))
         elif form.validate_on_submit()==False:
             flash("Error! Post not created", "error")
             return render_template("add_pic.html", form=form)
-
             
     return render_template("add_pic.html", form=form)
-
-
-
 @app.route("/logout/")
 def logout():
     logout_user()
     flash("You have been logged out successfully","success")
     return redirect(url_for("home"))
-
-
 @app.route("/admin/")
 def admin():
     
     return render_template('admin.html')
-
-
 @app.route("/pictures/")
 def pictures():
     pictures = Images.query.all()
     return render_template('pictures.html',images=pictures)
-
-
 @app.route("/users/")
 def users():
     users= User.query.all()
@@ -177,10 +193,11 @@ def edit_user(id):
             flash("Error! User not updated", "error")
             return render_template("edit_user.html", form=form,user=user)
     return render_template("edit_user.html", user=user,form=form)
-
-
+@app.route("/edit_image/")
 @app.route("/edit_image/<id>",methods=["GET","POST"])
-def edit_image(id):
+def edit_image(id=None):
+    if id == None:
+        return redirect(url_for('home'))
     img = Images.query.get_or_404(id)
     if current_user.is_authenticated:
         user = User.query.filter_by(id=current_user.id).first()
@@ -201,13 +218,12 @@ def edit_image(id):
                 img.file = save_picture(form.picture.data)
             db.session.commit()
             flash("Congratulations, post updated", "success")
-            return redirect(url_for("pictures"))
+            return redirect(url_for("gallery"))
         elif form.validate_on_submit()==False:
             flash("Error! Post not updated", "error")
             return render_template("edit_img.html", form=form,image=img)
         
     return render_template("edit_img.html", form=form,image=img)
-
 @app.route("/sendEmail/<string:id>/<string:post_id>/",methods=["GET","POST"])
 @login_required
 def send_email(id,post_id):
@@ -221,28 +237,20 @@ def send_email(id,post_id):
         mail.send(msg)
         flash("Message sent","success")
         return redirect(url_for("home"))
-
     if request.method=="GET":
         recipientUser = User.query.get(id).email
         senderEmail = User.query.get(current_user.id)
         form.recipient.data= recipientUser
         return render_template("send_email.html",form=form)
     return render_template("send_email.html",form=form)
-
-
 def send_reset_email(user):
     token = user.get_reset_token()
     msg = Message("Password Reset Request",sender="alesisio982017@gmail.com",recipients=[user.email])
     msg.body = """To reset your password, visit the following link:
 {}
-
 If you did not make this request then simply ignore this email and no change will be made.
-
 """.format(url_for("reset_token",token=token,_external = True))
     mail.send(msg)
-
-
-
 @app.route("/reset_password/",methods=["GET","POST"])
 def reset_request():
     if current_user.is_authenticated:
@@ -254,8 +262,6 @@ def reset_request():
         flash("An email has been sent with instructions to reset your password.","success")
         return redirect(url_for("login"))
     return render_template("request_reset_password.html",title="Reset Password",form=form)
-
-
 @app.route("/reset_password/<token>",methods=["GET","POST"])
 def reset_token(token):
     if current_user.is_authenticated:
@@ -272,6 +278,4 @@ def reset_token(token):
         db.session.commit()
         flash("The password has been updated","success")
         return redirect(url_for("login"))
-
     return render_template("reset_password.html",title="Reset Password",form=form)
-
