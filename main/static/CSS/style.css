@@ -27,6 +27,7 @@ nav {
   background-color: rgba(255, 255, 255, 1);
   color: black !important;
 }
+<<<<<<< HEAD
 #edit-img-link{
   color: transparent;
   font-size: 2rem;
@@ -50,6 +51,33 @@ nav {
 }
 
 
+=======
+
+
+#edit-img-link{
+  color: transparent;
+  font-size: 2rem;
+}
+#edit-img{
+  background-color: transparent;
+  position:absolute;
+  right:0;
+  top:0;
+  transform: translate(-100%,100%);
+}
+.col-12 {
+
+  padding-right: 0;
+  padding-left: 0;
+}
+.container-fluid {
+
+  padding-right: 0;
+  padding-left: 0;
+}
+
+
+>>>>>>> home
 #form-edit-image{
   background-color: white;
   padding-top: 1rem;
@@ -135,7 +163,11 @@ input:focus {
   border-radius: .0rem;
 }
 .input:focus {
+<<<<<<< HEAD
   height: 300px;
+=======
+  height: 150px;
+>>>>>>> home
 }
 .input {
   width: 500px;
@@ -149,6 +181,7 @@ input:focus {
   background-color: transparent;
   font-size: 2rem;
   border: 1px solid black;
+<<<<<<< HEAD
 }
 .form-group {
   position: relative;
@@ -188,6 +221,47 @@ input:focus {
   box-sizing: border-box;
   color: white;
 }
+=======
+}
+.form-group {
+  position: relative;
+}
+.form-group::after {
+  position: absolute;
+  content: '';
+  width: 0%;
+  height: 0.175rem;
+  background-color: black;
+  left: 0;
+  bottom: 0;
+  ;
+  box-sizing: border-box;
+  color: white;
+}
+.form-group:hover:after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 0.175rem;
+  background-color: black;
+  left: 0.5;
+  bottom: 0.0rem;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+.btn::after {
+  position: absolute;
+  content: '';
+  width: 0%;
+  height: 0.175rem;
+  background-color: red;
+  left: 0px;
+  bottom: 0px;
+  ;
+  box-sizing: border-box;
+  color: white;
+}
+>>>>>>> home
 #pictures-table {
   background-color: white;
 }
@@ -225,7 +299,11 @@ input:focus {
   background-size: cover;
 } */
 body {
+<<<<<<< HEAD
   background: black url(../images/background_flower.jpg) center center no-repeat;
+=======
+  background: black url(../images/home-background-2.jpg) center center no-repeat;
+>>>>>>> home
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -381,19 +459,32 @@ p {
   z-index: 1000;
 }
 .home-img-container img {
+<<<<<<< HEAD
   margin-bottom: 5rem;
 }
 
 #company-name {
   font-family: 'Parisienne', cursive;
   font-size: 2rem;
+=======
+  
+}
+
+#company-name {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.85rem;
+}
+
+#img-profile-box {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+>>>>>>> home
 }
 
 #img-profile-box {
   padding-right: 0 !important;
   padding-left: 0 !important;
 }
-
 
 #menu-gallery a{
   color: white!important;
@@ -411,7 +502,40 @@ p {
 #edit-img-container{
   padding-top:5rem
 }
+
+<<<<<<< HEAD
+#menu-gallery a{
+  color: white!important;
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: 1rem;
+}
+#container-profile {
+  padding-top: 5rem;
+}
+#add-new-image-link{
+  font-size: 2rem;
+  font-family: 'Didact Gothic', sans-serif;
+  display:block
+}
+#edit-img-container{
+  padding-top:5rem
+}
 @media (min-width: 576px) {
+=======
+nav a{
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700!important;
+  font-size: 1.25rem;
+}
+
+nav img{
+  width: 120px;
+}
+@media (min-width: 576px) {
+  nav img{
+    width: 150px;
+  }
+>>>>>>> home
   #about-img {
     width: 100% !important;
   }
@@ -458,6 +582,12 @@ p {
   font-size: 2rem;
 }
 @media (min-width: 768px) {
+<<<<<<< HEAD
+=======
+  nav img{
+    width: 170px;
+  }
+>>>>>>> home
   h1 {
     font-size: 3rem !important;
   }
@@ -477,6 +607,7 @@ p {
   }
 }
 @media (min-width: 992px) {
+<<<<<<< HEAD
   h1 {
     font-size: 3.5rem !important;
   }
@@ -487,6 +618,21 @@ p {
     height: 25rem;
     margin-top: 20rem;
   }
+=======
+  nav img{
+    width: 180px;
+  }
+  h1 {
+    font-size: 3.5rem !important;
+  }
+  #about-img {
+    width: 50% !important;
+  }
+  .gallery-preview {
+    height: 25rem;
+    margin-top: 20rem;
+  }
+>>>>>>> home
   #company-name {
     font-size: 2.75rem;
   }
