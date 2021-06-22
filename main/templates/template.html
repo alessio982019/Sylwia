@@ -23,41 +23,55 @@
     rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Parisienne&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  
+  
   <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/style.css') }}">
-  <title>Smotion Phography - Warszawa Fotograf</title>
+  <title>SMotion Phography - Warszawa Fotograf</title>
 </head>
 <body>
   <div class="position-fixed w-100" id='container-nav'>
-    <nav class="navbar navbar-expand-lg  w-100 px-md-5 px-md-5 px-3 py-2 py-md-4">
+    <nav class="navbar navbar-expand-lg navbar-dark w-100 px-md-5 px-md-5 px-3 py-2 py-md-4" id='navbar-home'>
       {% if url_for(request.endpoint) == '/home/' or url_for(request.endpoint) == '' %}
-      <a class="navbar-brand text-light" id='company-name' href="#home">Smotion Phography</a>
+      <!-- <a class="navbar-brand text-light" id='company-name' href="#home">Smotion Phography</a> -->
+      <a class="navbar-brand px-1 px-md-5" href="#">
+        <img src="{{url_for('static',filename='images/logo_nav.png')}}" width="120"  alt="">
+      </a>
+
       {% else %}
-      <a class="navbar-brand text-light" id='company-name' href="{{url_for('home')}}">Smotion Phography</a>
+      <!-- <a class="navbar-brand text-light" id='company-name' href="{{url_for('home')}}">Smotion Phography</a> -->
+
+      <a class="navbar-brand px-1 px-md-5" href="#">
+        <img src="{{url_for('static',filename='images/logo_nav.png')}}" width="120"  alt="">
+      </a>
       {% endif %}
-      <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarNav"
+      <button id = 'nav-toggle-button' class="navbar-toggler navbar-inverse border border-light" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon "></span>
+        <span class="navbar-toggler-icon navbar-inverse"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse " id="navbarNav">
         <ul class="navbar-nav ml-auto ">
           {% if url_for(request.endpoint) == '/home/' or url_for(request.endpoint) == '' %}
-          <li class="nav-item px-3 py-2">
+          <li class="nav-item px-3 py-2 text-left">
             <a class="nav-link text-light" href="#home">Home<span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item px-3 py-2">
+          <li class="nav-item px-3 py-2 text-left">
             <a class="nav-link text-light" href="{{url_for('about')}}">About me</a>
           </li>
-          <li class="nav-item dropdown px-3 py-2">
-            <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+          <li class="nav-item dropdown px-3 py-2 text-left">
+            <a class="nav-link text-light dropdown-toggle text-left" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
               Gallery
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id='dropdown-menu'>
-              <a class="dropdown-item text-light" href="{{url_for('gallery')}}">All</a>
-              <a class="dropdown-item text-light" href="#events">Events</a>
-              <a class="dropdown-item text-light" href="#food">Food</a>
-              <a class="dropdown-item text-light" href="#business">Business</a>
-              <a class="dropdown-item text-light" href="#people">People</a>
+            <div class="dropdown-menu text-left" aria-labelledby="navbarDropdownMenuLink" id='dropdown-menu'>
+              <a class="dropdown-item text-light text-left" href="{{url_for('gallery')}}">All</a>
+              <a class="dropdown-item text-light text-left" href="#events">Events</a>
+              <a class="dropdown-item text-light text-left" href="#food">Food</a>
+              <a class="dropdown-item text-light text-left" href="#business">Business</a>
+              <a class="dropdown-item text-light text-left" href="#people">People</a>
             </div>
           </li>
           <li class="nav-item px-3 py-2">
