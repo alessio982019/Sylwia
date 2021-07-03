@@ -33,5 +33,12 @@ class Images(db.Model, UserMixin):
     description = db.Column(db.String(200), nullable=False)
     category = db.Column(db.String(500), nullable=False)
     file = db.Column(db.String(60),nullable=True)
-    def __repr__(self):
-        return "Post({},{},{},{},{},{},{})".format(self.id,self.title,self.description,self.category,self.file)
+    column = db.Column(db.Integer,nullable=False)
+ 
+class Category(db.Model):
+    id = db.Column(db.Integer,primary_key=True,nullable=False)
+    title = db.Column(db.String(60), nullable=False)
+    description = db.Column(db.String(200), nullable=False)
+    alt_prop = db.Column(db.String(200), nullable=False)
+    category = db.Column(db.String(500), nullable=False)
+    file = db.Column(db.String(60),nullable=True)

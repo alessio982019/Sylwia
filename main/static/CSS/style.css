@@ -27,31 +27,6 @@ nav {
   background-color: rgba(255, 255, 255, 1);
   color: black !important;
 }
-<<<<<<< HEAD
-#edit-img-link{
-  color: transparent;
-  font-size: 2rem;
-}
-#edit-img{
-  background-color: transparent;
-  position:absolute;
-  right:0;
-  top:0;
-  transform: translate(-100%,100%);
-}
-.col-12 {
-
-  padding-right: 0;
-  padding-left: 0;
-}
-.container-fluid {
-
-  padding-right: 0;
-  padding-left: 0;
-}
-
-
-=======
 
 
 #edit-img-link{
@@ -77,7 +52,6 @@ nav {
 }
 
 
->>>>>>> home
 #form-edit-image{
   background-color: white;
   padding-top: 1rem;
@@ -163,15 +137,11 @@ input:focus {
   border-radius: .0rem;
 }
 .input:focus {
-<<<<<<< HEAD
-  height: 300px;
-=======
   height: 150px;
->>>>>>> home
 }
 .input {
   width: 500px;
-  height: 200px;
+  height: 7.5rem;
 }
 #div-social {
   background-color: white;
@@ -181,51 +151,12 @@ input:focus {
   background-color: transparent;
   font-size: 2rem;
   border: 1px solid black;
-<<<<<<< HEAD
 }
 .form-group {
   position: relative;
 }
-.form-group::after {
-  position: absolute;
-  content: '';
-  width: 0%;
-  height: 0.175rem;
-  background-color: red;
-  left: 0;
-  bottom: 0;
-  ;
-  box-sizing: border-box;
-  color: white;
-}
-.form-group:hover:after {
-  position: absolute;
-  content: '';
-  width: 100%;
-  height: 0.175rem;
-  background-color: red;
-  left: 0.5;
-  bottom: 0.0rem;
-  box-sizing: border-box;
-  transition: 0.3s;
-}
-.btn::after {
-  position: absolute;
-  content: '';
-  width: 0%;
-  height: 0.175rem;
-  background-color: red;
-  left: 0px;
-  bottom: 0px;
-  ;
-  box-sizing: border-box;
-  color: white;
-}
-=======
-}
-.form-group {
-  position: relative;
-}
+
+
 .form-group::after {
   position: absolute;
   content: '';
@@ -261,7 +192,6 @@ input:focus {
   box-sizing: border-box;
   color: white;
 }
->>>>>>> home
 #pictures-table {
   background-color: white;
 }
@@ -270,7 +200,7 @@ input:focus {
   padding-top: 5rem;
 }
 #about-content {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: white;
   padding: 1rem;
 }
 #btn-contact {
@@ -282,8 +212,11 @@ input:focus {
   margin-top: 25rem !important;
 }
 #contact {
-  background-color: rgba(255, 255, 255, .6);
+  background-color: rgba(255, 255, 255, .9);
   margin-top: 15rem !important;
+}
+#main-external{
+  overflow-x: hidden;
 }
 #main-container {
   background-color: rgba(255, 255, 255, 0.75);
@@ -298,18 +231,19 @@ input:focus {
   background-position: center center;
   background-size: cover;
 } */
-body {
-<<<<<<< HEAD
-  background: black url(../images/background_flower.jpg) center center no-repeat;
-=======
-  background: black url(../images/home-background-2.jpg) center center no-repeat;
->>>>>>> home
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-position: center center;
-  background-size: cover;
+
+#cont-background{
+  position: absolute;
+  
 }
+#container-gallery {
+  width: 100%;
+    height: auto;
+    position: relative;
+    background-color: #FEFFFF;
+}
+
+
 #main-content {
   background-color: #ffffff;
 }
@@ -332,13 +266,18 @@ table a {
   color: black;
 }
 form {
-  padding: 2rem;
+  
   color: white;
   color: white;
 }
 input {
   background-color: transparent !important;
 }
+
+textarea {
+  background-color: transparent !important;
+}
+
 .form button {}
 .form-group:hover {
   transition: border 2s ease;
@@ -416,9 +355,9 @@ p {
   letter-spacing: .2rem;
   line-height: 1.25rem;
 }
-#about-img {
-  width: 100%;
-}
+
+
+
 .gallery-preview {
   position: relative;
   overflow: hidden;
@@ -426,7 +365,7 @@ p {
   text-align: center;
   color: white;
   opacity: 0.9;
-  background-color: black;
+ 
   margin-top: 7.5rem;
 }
 .gallery-preview img {
@@ -435,6 +374,10 @@ p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.gallery-preview p{
+  background-color: rgba(0,0,0,.75);
+    padding: 1rem;
 }
 .gallery-preview a {
   width: 25%;
@@ -459,14 +402,6 @@ p {
   z-index: 1000;
 }
 .home-img-container img {
-<<<<<<< HEAD
-  margin-bottom: 5rem;
-}
-
-#company-name {
-  font-family: 'Parisienne', cursive;
-  font-size: 2rem;
-=======
   
 }
 
@@ -478,7 +413,6 @@ p {
 #img-profile-box {
   padding-right: 0 !important;
   padding-left: 0 !important;
->>>>>>> home
 }
 
 #img-profile-box {
@@ -487,12 +421,12 @@ p {
 }
 
 #menu-gallery a{
-  color: white!important;
+  color: black!important;
   font-family: 'Didact Gothic', sans-serif;
   font-size: 1rem;
 }
 #container-profile {
-  padding-top: 5rem;
+  padding-top: 2rem;
 }
 #add-new-image-link{
   font-size: 2rem;
@@ -503,25 +437,6 @@ p {
   padding-top:5rem
 }
 
-<<<<<<< HEAD
-#menu-gallery a{
-  color: white!important;
-  font-family: 'Didact Gothic', sans-serif;
-  font-size: 1rem;
-}
-#container-profile {
-  padding-top: 5rem;
-}
-#add-new-image-link{
-  font-size: 2rem;
-  font-family: 'Didact Gothic', sans-serif;
-  display:block
-}
-#edit-img-container{
-  padding-top:5rem
-}
-@media (min-width: 576px) {
-=======
 nav a{
   font-family: 'Raleway', sans-serif;
   font-weight: 700!important;
@@ -531,13 +446,85 @@ nav a{
 nav img{
   width: 120px;
 }
+
+.column {
+  flex: 33%;
+  max-width: 33%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+#contact p {
+  font-size: .5rem;
+}
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+.gallery-preview p{
+  display: none;
+  bottom: 0;
+    transform: translate(0, 0);
+    position: absolute;
+}
+#about-img {
+  padding:2rem;
+  border-radius: 50%;
+  float: left;
+  
+}
+#about-content {
+  font-size: .75rem;
+  word-spacing: .3rem;
+    letter-spacing: .2rem;
+    line-height: 1rem;
+}
+#about-me-gallery{
+  padding-top:5rem;
+  text-align: center;
+}
+
+#container-new-image{
+  padding-top:3rem;
+}
 @media (min-width: 576px) {
+  #container-new-image{
+    padding-top:4rem;
+  }
+  #about-me-gallery{
+    padding-top:7.5rem;
+    text-align: center;
+  }
   nav img{
     width: 150px;
   }
->>>>>>> home
   #about-img {
-    width: 100% !important;
+    width: 50% !important;
   }
   h1 {
     font-size: 2.5rem !important;
@@ -557,12 +544,12 @@ nav img{
   }
 
   #menu-gallery a{
-    color: white!important;
+    color: black!important;
     font-family: 'Didact Gothic', sans-serif;
     font-size: 1.25rem;
   }
   #container-profile {
-    padding-top: 5rem;
+    padding-top: 1rem;
   }
 
   #edit-img-container{
@@ -582,12 +569,40 @@ nav img{
   font-size: 2rem;
 }
 @media (min-width: 768px) {
-<<<<<<< HEAD
-=======
+  #about-content {
+    font-size: 1rem;
+    word-spacing: .3rem;
+      letter-spacing: .3rem;
+      line-height: 1.25rem;
+  }
+
+
+  #about-me-gallery{
+    padding-top:10rem;
+    text-align: center;
+  }
+
+  #container-new-image{
+    padding-top:5rem;
+  }
+  #about-img {
+    padding:2rem;
+    border-radius: 50%;
+    float: left;
+    -webkit-shape-outside:circle();
+  }
+  #about-me-gallery{
+    
+  }
+  .gallery-preview p{
+    display: block;
+    bottom: 0;
+      transform: translate(0, 0);
+      position: absolute;
+  }
   nav img{
     width: 170px;
   }
->>>>>>> home
   h1 {
     font-size: 3rem !important;
   }
@@ -606,46 +621,59 @@ nav img{
     padding-top:10rem
   }
 }
+
+
 @media (min-width: 992px) {
-<<<<<<< HEAD
-  h1 {
-    font-size: 3.5rem !important;
-  }
-  #about-img {
-    width: 50% !important;
-  }
-  .gallery-preview {
-    height: 25rem;
-    margin-top: 20rem;
-  }
-=======
   nav img{
     width: 180px;
   }
+#dropdown-menu a{
+  text-align: left!important;
+}
+
   h1 {
     font-size: 3.5rem !important;
   }
   #about-img {
     width: 50% !important;
+    
   }
   .gallery-preview {
     height: 25rem;
     margin-top: 20rem;
+    transition: transform .1s;
+    max-width: 100%;
   }
->>>>>>> home
+
+  .gallery-preview:hover {
+    transform: scale(1.1);
+  }
   #company-name {
     font-size: 2.75rem;
   }
   #menu-gallery a{
-    color: white!important;
+
+
     font-family: 'Didact Gothic', sans-serif;
     font-size: 1.5rem;
   }
   #container-profile {
-    padding-top: 5rem;
+    padding-top: 1rem;
   }
 }
+
+
+
+
+
+
 @media (min-width: 1200px) {
+  #about-content {
+    font-size: 1.25rem;
+    word-spacing: .3rem;
+      letter-spacing: .2rem;
+      line-height: 2.5rem;
+  }
   .resize_fit_center {
     left: -50%;
     width: 100%;
@@ -662,12 +690,24 @@ nav img{
     font-size: 3rem;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
 .login-div {
   height: 100vh !important;
   ;
 }
 #user-table {
   font-size: 0.75rem;
+  padding-top:7.5rem
 }
 #gallery-form input {
   background-color: white !important;

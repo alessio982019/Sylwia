@@ -33,27 +33,9 @@ $(window).scroll(function() {
     var objectSelect = $("#background-logo");
     var objectPosition = objectSelect.offset().top - 50 ;
     var objectPosition_btm = objectPosition + objectSelect.height() + 25;
-    
     var nav = document.getElementById('container-nav');
     var a = document.getElementById('container-nav').getElementsByTagName('a');
     var drop_menu = document.getElementById('dropdown-menu');
-<<<<<<< HEAD
-    if (scroll > objectPosition) {
-        console.log(scroll + " " + objectPosition)
-        for (var i = 0; i < a.length; i++) {
-            var elem = a[i];
-            elem.classList.remove("text-light");
-            elem.classList.add("text-dark");
-        };
-        
-        
-        drop_menu.classList.add('menu-light');
-        nav.classList.add("bg-white");
-    } else {
-
-        nav.classList.remove("bg-white");
-        drop_menu.classList.remove('menu-light');
-=======
     var navbar = document.getElementById('navbar-home');
     var contact_box = $('#contact');
     var contact_top = contact_box.offset().top - 50;
@@ -98,65 +80,18 @@ $(window).scroll(function() {
             a[i].classList.remove('text-dark');
             a[i].classList.add('text-light');
         }
->>>>>>> home
         
     }
 });
-$(document).ready(function(){
-   
-<<<<<<< HEAD
-    // if (window_top > div_top) {
-    //     document.getElementById('home').classList.remove('position-absolute')
-
-
-    //     } 
-    //     //if window top reaches the limit removed class
-    //     if(window_top < document.getElementById('about').position().top){
-
-    //         document.getElementById('home').classList.add('position-absolute')
-    //     }
-=======
->>>>>>> home
-    var add_image_link = document.getElementById('add-new-image-link');
-    var add_image_form = document.getElementById('add-image-container');
-    add_image_link.addEventListener('click',function(){
-
-        if(add_image_form.classList.contains('d-none') ){
-            add_image_form.classList.remove('d-none');
-            add_image_form.classList.add('d-flex');
-            add_image_link.innerHTML = 'Close';
-        } else {
-            
-            add_image_form.classList.remove('d-flex');
-            add_image_form.classList.add('d-none');
-            add_image_link.innerHTML = 'Add a new image';
-        };
-        
+$(document).ready(function () {
+    var $horizontal = $('#img-home');
+    var startPosition = $horizontal.position().left;
+    var speed = 14;
+    $(window).scroll(function () {
+        var st = $(this).scrollTop();
+        var newPos = (st * (speed/100)) + startPosition;
+        $horizontal.css({
+            'left': newPos
+        });
     });
-    var category_div = document.getElementsByClassName("category-pic");
-
-    for (var i = 0; i < category_div.length;i+=1){
-        (function(){
-            var element_div = category_div[i];
-
-            element_div.addEventListener("click",function(){ onClickVisible(element_div) });
-        }());
-            
-          
-    };
-
-    var close_div = document.getElementsByClassName("close-gallery");
-
-    for (var i = 0; i < close_div.length;i+=1){
-        (function(){
-            var close_btn = close_div[i];
-
-            close_btn.addEventListener("click",function(){ onClickNotVisible(close_btn) });
-        }());
-            
-          
-    }
-
-
- 
-})
+});

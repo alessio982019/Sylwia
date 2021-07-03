@@ -10,7 +10,7 @@ class RegistrationForm(FlaskForm):
     firstname = StringField('firstname', validators=[DataRequired(),Length(min=2,max=50)])
     lastname = StringField('lastname', validators=[DataRequired(),Length(min=2,max=50)])
     email = StringField('Email',validators=[DataRequired(),Email()])
-    picture = FileField('Image', validators=[ FileAllowed(['jpg','png','jpeg'])])
+    picture = FileField('Image', validators=[ DataRequired(),FileAllowed(['jpg','png','jpeg'])])
     password = PasswordField('Password',validators=[DataRequired(),Regexp('[A-Za-z0-9@#$%^&+=]{8,}',message='Password not valid, example : Password123!')])
     confirm_password = PasswordField('Confirm Password',validators=[DataRequired(),EqualTo('password')])
     submit = SubmitField('Create a new account')
@@ -37,19 +37,37 @@ class addPost(FlaskForm):
     text = TextAreaField(render_kw={"rows":3, "cols": 4}) 
     picture = FileField('Image', validators=[ FileAllowed(['jpg','png','jpeg'])])
     category = SelectField('Category',validators=[DataRequired()], choices=["Business","People","Food","Events"])
+    column = SelectField('Column',validators=[DataRequired()], choices=[1,2,3])
     submit = SubmitField('Submit')
     back = SubmitField('Back')
+
+
 class editPost(FlaskForm):
     title = StringField('Post title',validators=[DataRequired()])
     text = TextAreaField(render_kw={"rows":5, "cols": 4}) 
     picture = FileField('Image', validators=[ FileAllowed(['jpg','png','jpeg'])])
     category = SelectField('Category',validators=[DataRequired()], choices=["Business","People","Food","Events"])
+    column = SelectField('Column',validators=[DataRequired()], choices=[1,2,3])
     submit = SubmitField('Submit')
     back = SubmitField('Back')
+
+class editCategory(FlaskForm):
+    title = StringField('Post title',validators=[DataRequired()])
+    text = TextAreaField(render_kw={"rows":5, "cols": 4}) 
+    picture = FileField('Image', validators=[ FileAllowed(['jpg','png','jpeg'])])
+    category = SelectField('Category',validators=[DataRequired()], choices=["Business","People","Food","Events"])
+    title = StringField('Post title',validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+
 class SendEmail(FlaskForm):
-    recipient = StringField('Recipient',validators=[DataRequired()])
-    description = TextAreaField('Body',render_kw={"rows":10, "cols": 11})
-    submit = SubmitField('Send')
+    customer_email = StringField('Email',validators=[Email(),DataRequired()])
+    name = StringField('Name',validators=[DataRequired()])
+    surname = StringField('Surname',validators=[DataRequired()])
+    phoneno= StringField('Phone number',validators=[DataRequired()])
+    text = TextAreaField('Type your message here!',render_kw={"rows":5, "cols": 11})
+    submit = SubmitField('Contanct me')
+
 class RequestResetForm(FlaskForm):
     email = StringField('Email',validators=[DataRequired(),Email()])
     submit = SubmitField('Request Password Reset')

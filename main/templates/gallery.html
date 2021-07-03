@@ -1,16 +1,20 @@
 {% extends "template.html" %}
 {% block content %}
+<div id='container-gallery'>
+<script src="{{ url_for('static', filename='/JS/gallery_script.js') }}"></script>
 {% set counter = namespace(value=0)  %}
 {%  if current_user.is_authenticated %}
-<div class="row pt-5">
+
+
+<div class="row " id='container-new-image'>
     <div class="col-12 pt-5 text-center ">
-        <a href="#" class='text-white' id='add-new-image-link' >Add a new image</a>
+        <a href="#" class='text-dark' id='add-new-image-link' >Add a new image</a>
     </div>
 </div>
 
-<div class="row  justify-content-center d-none" id='add-image-container'>
-    <div class="col-12 col-sm-10 col-md-8 col-lg-6">
-        <form class='bg-light text-dark text-center' id='gallery-form text-center' enctype="multipart/form-data" method="POST">
+<div class="row  justify-content-center d-none " id='add-image-container'>
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6 ">
+        <form class='bg-light text-dark text-center p-5' id='gallery-form text-center' enctype="multipart/form-data" method="POST">
             {{ form.hidden_tag() }}
             <h1>Add a new image</h1>
             <div class="form-group my-3">
@@ -37,6 +41,17 @@
                 {% endfor %}
                 {% endif%}
             </div>
+
+            <div class="form-group my-3">
+                {{ form.column(class="form-input-email w-100", placeholder='Column') }}
+                {% if form.column.errors %}
+                {% for error in form.column.errors %}
+                <small id="passwordHelp" class="text-danger"><strong>Error: </strong>{{error}} </small>
+                {% endfor %}
+                {% endif%}
+            </div>
+
+
             <div class="form-group my-3">
                 <label class="custom-file-label form-input-email " style='position:absolute;' for="picture"
                     placeholder="File">Image</label>
@@ -48,41 +63,81 @@
     </div>
 </div>
 {%  endif %}
-<div class="row d-flex justify-content-center" id='container-profile'>
-    <div class="col-12 col-sm-10 col-md-8">
-    <div class="row my-5 d-flex justify-content-center border-bottom border-white" id='menu-gallery'>
 
+
+   
+    <div class="row d-flex justify-content-center  " id='about-me-gallery'>
+      <div class="col-12 col-sm-12 col-md-10 col-lg-8 align-middle">
+        <img src="{{ url_for('static', filename='/images/about_me.jpg') }}" alt="" id='about-img'
+          class="pull-left w-100  ">
+        <p id='about-content' class=''>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+          when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+          It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+          unchanged.
+          It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
+          recently
+          with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+      </div>
+ 
+    </div>
+
+
+  
+<div class="row d-flex justify-content-center" id='container-profile'>
+    <div class="col-12 col-sm-12 col-md-10">
+    <div class="row my-5 d-flex justify-content-center border-bottom border-dark" id='menu-gallery'>
+        
         <a href="{{url_for('gallery',category='Business')}}" class='px-2 px-sm-3 px-md-4 px-xl-5 py-2'>Business</a>
         <a href="{{url_for('gallery',category='Events')}}" class='px-2 px-sm-3 px-md-4 px-xl-5 py-2'>Events</a>
         <a href="{{url_for('gallery')}}" class='px-2 px-sm-3 px-md-4 px-xl-5 py-2'>All</a>
         <a href="{{url_for('gallery',category='People')}}" class='px-2 px-sm-3 px-md-4 px-xl-5 py-2'>People</a>
         <a href="{{url_for('gallery',category='Food')}}" class='px-2 px-sm-3 px-md-4 px-xl-5 py-2'>Food</a>
     </div>
+
+
+
     <div class="row d-flex justify-content-center">
-    {% for image in images %}
 
-        {% if counter.value == 2 %}
-            <div class="col-12" id='img-profile-box'>
-            
-            {% set counter.value = 0 %}
-        {% else %}
-            <div class="col-6" id='img-profile-box'>
+   
 
-            {% set counter.value = counter.value + 1  %}
-        {% endif %}
+       
 
-                    <img src="{{url_for('static',filename= 'images/' + image.file )}}" alt="{{counter.value}}" class="img-fluid p-1" id="img-profile">
-                    
-                    {% if current_user.is_authenticated %}
-                    <a href="{{url_for('edit_image', id = image.id)}}" id='edit-img-link'>
-                        <div id="edit-img">
-                            <i class="fas fa-edit text-white"></i>
-                        </div>
-                    </a>
-                    {% endif %}
+            <div class="column">
+                {% for image in images %}
+                {% if  image.column == 1 %}
+                        <img alt='{{ image.description }}'src="{{url_for('static',filename= 'images/' + image.file )}}">
+                {% endif %}
+            {% endfor %}     
             </div>
-    {% endfor %}
+
+            <div class="column">
+                {% for image in images %}
+                {% if  image.column == 2 %}
+                        <img alt='{{ image.description }}'src="{{url_for('static',filename= 'images/' + image.file )}}">
+                {% endif %}
+            {% endfor %}   
+        
+        </div>
+
+            <div class="column">
+                {% for image in images %}
+                {% if  image.column == 3 %}
+                        <img alt='{{ image.description }}'src="{{url_for('static',filename= 'images/' + image.file )}}">
+                {% endif %}
+            {% endfor %}   
+        
+        </div>
+                
+      
+        
+    </div>
+    </div>
 </div>
-</div>
+
+
+
+
+
 </div>
 {% endblock %}

@@ -8,8 +8,8 @@
   
               <div class="row py-5 px-md-2 d-flex justify-content-center align-middle" style='padding:0!important'>
                 
-                  <div class="col-12 col-sm-8 col-lg-6 col-xl-4 px-md-2 mx-md-1 align-middle" style='padding:0!important'>
-                      <form class='border border-dark' enctype="multipart/form-data" method="POST">
+                  <div id='container-register' class="col-12 col-sm-8 col-lg-6 col-xl-4 px-md-2 mx-md-1 align-middle" style='padding:0!important'>
+                      <form class=' p-5 bg-white' enctype="multipart/form-data" method="POST">
                       {{ form.hidden_tag() }}
                           <div class="form-group " id='contact-us-title'>
                               <h3>Add a new admin</h3>
@@ -85,7 +85,7 @@
                                     {% endif%}     
                             </div>
                           </div>
-                          <button type="submit" class="btn btn-black w-100" >Add!</button>
+                          <button type="submit" class="btn btn-black w-100" >Create new user</button>
                       </form>
                   </div>
               </div>

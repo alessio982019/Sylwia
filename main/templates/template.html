@@ -23,151 +23,10 @@
     rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Parisienne&display=swap" rel="stylesheet">
-<<<<<<< HEAD
-  <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/style.css') }}">
-  <title>Smotion Phography - Warszawa Fotograf</title>
-</head>
-<body>
-  <div class="position-fixed w-100" id='container-nav'>
-    <nav class="navbar navbar-expand-lg  w-100 px-md-5 px-md-5 px-3 py-2 py-md-4">
-      {% if url_for(request.endpoint) == '/home/' or url_for(request.endpoint) == '' %}
-      <a class="navbar-brand text-light" id='company-name' href="#home">Smotion Phography</a>
-      {% else %}
-      <a class="navbar-brand text-light" id='company-name' href="{{url_for('home')}}">Smotion Phography</a>
-      {% endif %}
-      <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon "></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto ">
-          {% if url_for(request.endpoint) == '/home/' or url_for(request.endpoint) == '' %}
-          <li class="nav-item px-3 py-2">
-            <a class="nav-link text-light" href="#home">Home<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item px-3 py-2">
-            <a class="nav-link text-light" href="{{url_for('about')}}">About me</a>
-          </li>
-          <li class="nav-item dropdown px-3 py-2">
-            <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Gallery
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id='dropdown-menu'>
-              <a class="dropdown-item text-light" href="{{url_for('gallery')}}">All</a>
-              <a class="dropdown-item text-light" href="#events">Events</a>
-              <a class="dropdown-item text-light" href="#food">Food</a>
-              <a class="dropdown-item text-light" href="#business">Business</a>
-              <a class="dropdown-item text-light" href="#people">People</a>
-=======
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-  
-  
-  <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/style.css') }}">
-  <title>SMotion Phography - Warszawa Fotograf</title>
-</head>
-<body>
-  <div class="position-fixed w-100" id='container-nav'>
-    <nav class="navbar navbar-expand-lg navbar-dark w-100 px-md-5 px-md-5 px-3 py-2 py-md-4" id='navbar-home'>
-      {% if url_for(request.endpoint) == '/home/' or url_for(request.endpoint) == '' %}
-      <!-- <a class="navbar-brand text-light" id='company-name' href="#home">Smotion Phography</a> -->
-      <a class="navbar-brand px-1 px-md-5" href="#">
-        <img src="{{url_for('static',filename='images/logo_nav.png')}}" width="120"  alt="">
-      </a>
-
-      {% else %}
-      <!-- <a class="navbar-brand text-light" id='company-name' href="{{url_for('home')}}">Smotion Phography</a> -->
-
-      <a class="navbar-brand px-1 px-md-5" href="#">
-        <img src="{{url_for('static',filename='images/logo_nav.png')}}" width="120"  alt="">
-      </a>
-      {% endif %}
-      <button id = 'nav-toggle-button' class="navbar-toggler navbar-inverse border border-light" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon navbar-inverse"></span>
-      </button>
-      <div class="collapse navbar-collapse " id="navbarNav">
-        <ul class="navbar-nav ml-auto ">
-          {% if url_for(request.endpoint) == '/home/' or url_for(request.endpoint) == '' %}
-          <li class="nav-item px-3 py-2 text-left">
-            <a class="nav-link text-light" href="#home">Home<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item px-3 py-2 text-left">
-            <a class="nav-link text-light" href="{{url_for('about')}}">About me</a>
-          </li>
-          <li class="nav-item dropdown px-3 py-2 text-left">
-            <a class="nav-link text-light dropdown-toggle text-left" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Gallery
-            </a>
-            <div class="dropdown-menu text-left" aria-labelledby="navbarDropdownMenuLink" id='dropdown-menu'>
-              <a class="dropdown-item text-light text-left" href="{{url_for('gallery')}}">All</a>
-              <a class="dropdown-item text-light text-left" href="#events">Events</a>
-              <a class="dropdown-item text-light text-left" href="#food">Food</a>
-              <a class="dropdown-item text-light text-left" href="#business">Business</a>
-              <a class="dropdown-item text-light text-left" href="#people">People</a>
->>>>>>> home
-            </div>
-          </li>
-          <li class="nav-item px-3 py-2">
-            <a class="nav-link text-light" href="#contact">Contact</a>
-          </li>
-          {% if current_user.is_authenticated %}
-          <li class="nav-item px-3 py-2">
-            <a class="nav-link text-light" href="{{ url_for('pictures')}}">Photos</a>
-          </li>
-          <li class="nav-item px-3 py-2">
-            <a class="nav-link text-light" href="{{ url_for('users')}}">Users</a>
-          </li>
-          <li class="nav-item px-3 py-2">
-            <a class="nav-link text-light" href="{{ url_for('logout')}}">Logout</a>
-          </li>
-          {% endif %}
-          {% else %}
-          <li class="nav-item px-3 py-2">
-            <a class="nav-link text-light" href="{{url_for('home')}}">Home<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item px-3 py-2">
-            <a class="nav-link text-light" href="{{url_for('about')}}">About me</a>
-          </li>
-          {% if current_user.is_authenticated %}
-          <li class="nav-item px-3 py-2">
-            <a class="nav-link text-light" href="{{ url_for('pictures')}}">Photos</a>
-          </li>
-          <li class="nav-item px-3 py-2">
-            <a class="nav-link text-light" href="{{ url_for('users')}}">Users</a>
-          </li>
-          <li class="nav-item px-3 py-2">
-            <a class="nav-link text-light" href="{{ url_for('logout')}}">Logout</a>
-          </li>
-          {% endif %}
-          {% endif %}
-        </ul>
-      </div>
-    </nav>
-  </div>
-  <!-- MESSAGES FROM ROUTES -->
-  {% with messages = get_flashed_messages(category_filter=["success"]) %}
-  {% if messages %}
-  {% for msg in  messages %}
-  <div class="alert alert-success mb-3 w-100 " id="flashMsg" style="text-align: center;">{{msg}}</div>
-  {% endfor %}
-  {% endif %}
-  {% endwith %}
-  {% with messages = get_flashed_messages(category_filter=["error"]) %}
-  {% if messages %}
-  {% for msg in  messages %}
-  <div class="alert alert-danger mb-3 w-100" style="text-align: center;">{{msg}}</div>
-  {% endfor %}
-  {% endif %}
-  {% endwith %}
-  <!-- END MESSAGES FROM ROUTES -->
-  {% block content %}
-  {% endblock %}
-  <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
@@ -178,6 +37,160 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
   </script>
+  
+  <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/style.css') }}">
+  <title>SMotion Phography - Warszawa Fotograf</title>
+</head>
+{% if url_for(request.endpoint) == '/gallery/'  %}
+<body style='background-color: white;'>
+{% else %}
+<body style='background: black url("{{url_for("static",filename="images/home-background-2.jpg")}}"); center center no-repeat; 
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: center;
+background-position: center center;
+background-size: cover;'>
+  {% endif %}
+
+  <div class="position-fixed w-100" id='container-nav'>
+    {% if url_for(request.endpoint) == '/gallery/'  %}
+    <nav class="navbar navbar-expand-lg navbar-dark w-100 px-md-5 px-md-5 px-3  bg-dark" id='navbar-home'>
+     
+    {% else %}
+    <nav class="navbar navbar-expand-lg navbar-dark w-100 px-md-5 px-md-5 px-3  " id='navbar-home'>
+      
+      {% endif %}
+      {% if url_for(request.endpoint) == '/home/' or url_for(request.endpoint) == '' %}
+      <!-- <a class="navbar-brand text-light" id='company-name' href="#home">Smotion Phography</a> -->
+      <a class="navbar-brand px-1 px-md-5" href="#home">
+        <img src="{{url_for('static',filename='images/logo_nav.png')}}" width="120"  alt="">
+      </a>
+
+      {% else %}
+      <!-- <a class="navbar-brand text-light" id='company-name' href="{{url_for('home')}}">Smotion Phography</a> -->
+
+      <a class="navbar-brand px-1 px-md-5" href="{{url_for('home')}}">
+        <img src="{{url_for('static',filename='images/logo_nav.png')}}" width="120"  alt="">
+      </a>
+      {% endif %}
+      <button id = 'nav-toggle-button' class="navbar-toggler navbar-inverse border border-light" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon navbar-inverse"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarNav">
+        <ul class="navbar-nav ml-auto ">
+          {% if url_for(request.endpoint) == '/home/' or url_for(request.endpoint) == '' %}
+          <li class="nav-item px-3 py-2 text-right">
+            <a class="nav-link text-light" href="#home">Home<span class="sr-only">(current)</span></a>
+          </li>
+    
+          <li class="nav-item dropdown px-3 py-2 text-right">
+            <a class="nav-link text-light dropdown-toggle text-right" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Gallery
+            </a>
+            <div class="dropdown-menu text-right" aria-labelledby="navbarDropdownMenuLink" id='dropdown-menu'>
+              <a class="dropdown-item text-light text-right" href="{{url_for('gallery')}}">All</a>
+              <a class="dropdown-item text-light text-right" href="#events">Events</a>
+              <a class="dropdown-item text-light text-right" href="#food">Food</a>
+              <a class="dropdown-item text-light text-right" href="#business">Business</a>
+              <a class="dropdown-item text-light text-right" href="#people-section">People</a>
+            </div>
+          </li>
+          <li class="nav-item px-3 py-2 text-right">
+            <a class="nav-link text-light " href="#contact">Contact</a>
+          </li>
+          {% if current_user.is_authenticated %}
+          <li class="nav-item px-3 py-2  text-right">
+            <a class="nav-link text-light" href="{{ url_for('pictures')}}">Photos</a>
+          </li>
+          <li class="nav-item px-3 py-2  text-right">
+            <a class="nav-link text-light" href="{{ url_for('users')}}">Users</a>
+          </li>
+          <li class="nav-item px-3 py-2  text-right">
+            <a class="nav-link text-light" href="{{ url_for('logout')}}">Logout</a>
+          </li>
+          {% endif %}
+          {% else %}
+          <li class="nav-item px-3 py-2  text-right">
+            <a class="nav-link text-light" href="{{url_for('home')}}">Home<span class="sr-only">(current)</span></a>
+          </li>
+       
+          {% if current_user.is_authenticated %}
+          <li class="nav-item px-3 py-2  text-right">
+            <a class="nav-link text-light" href="{{ url_for('pictures')}}">Photos</a>
+          </li>
+          <li class="nav-item px-3 py-2  text-right">
+            <a class="nav-link text-light" href="{{ url_for('users')}}">Users</a>
+          </li>
+          <li class="nav-item px-3 py-2  text-right">
+            <a class="nav-link text-light" href="{{ url_for('logout')}}">Logout</a>
+          </li>
+          {% endif %}
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+
+
+
+
+
+
+
+  <!-- MESSAGES FROM ROUTES -->
+  {% with messages = get_flashed_messages(category_filter=["success"]) %}
+  {% if messages %}
+  {% for msg in  messages %}
+  <div class="alert alert-success mb-3 w-100 " id="flashMsg" style="text-align: center;z-index:20">{{msg}}</div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+  {% with messages = get_flashed_messages(category_filter=["error"]) %}
+  {% if messages %}
+  {% for msg in  messages %}
+  <div class="alert alert-danger mb-3 w-100" style="text-align: center;z-index:20">{{msg}}</div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+
+
+    <!-- End Background image -->
+  {% block content %}
+  {% endblock %}
+  <!-- Optional JavaScript -->
+
+  <footer>
+
+   <div class="row d-flex justify-content-center px-2 mx-1 border-top border-black pt-5 position-relative" style='background-color: rgba(255, 255, 255, .9);'>
+    <div class="col-12 col-sm-8 col-lg-6 col-xl-6  text-dark ">
+      <div class="row py-3">
+        <p>Smotion Phography <br> Warszawa, Zawiszy 12 01-167 <br> Smotion.photography@smotion.pl</p>
+      </div>
+      <div class="row d-flex justify-content-between">
+        <span style='font-size: 3.8rem;' class='px-2'>
+          <a href="" id='facebook'><i class="fab fa-facebook"></i></a>
+        </span>
+        <span style='font-size: 4rem;' class='px-2'>
+          <a href=""><i id='insta' class="fab fa-instagram"></i></a>
+        </span>
+        <span style='font-size: 3.75rem;' class='px-2'>
+          <a href=""><i class="fas fa-phone" style="color:green"></i></a>
+        </span>
+        <span style='font-size: 4rem;' class='px-2'>
+          <a href=""><i class="fas fa-envelope" style="color:rgb(45, 192, 185)"></i></a>
+        </span>
+      </div>
+      <div class="row py-3">
+        <p>Developed by @Alessio Giovannini - AMG IT Services</p>
+      </div>
+    </div>
+  </div>
+
+  </footer>
   <script src="{{ url_for('static', filename='/JS/script.js') }}"></script>
 </body>
 </html>
