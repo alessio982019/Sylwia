@@ -1,5 +1,4 @@
 import re
-
 import decimal
 import json
 from flask import render_template, url_for, flash, redirect,request,jsonify,Blueprint,session
@@ -12,11 +11,11 @@ from flask_mail import Message
 import requests
 import stripe
 from werkzeug.utils import secure_filename
-
-
 import secrets
 from PIL import Image,ImageTk
 import os
+
+
 def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
     _,f_ext = os.path.splitext(form_picture.filename)
@@ -27,7 +26,6 @@ def save_picture(form_picture):
     i.resize(pic_size)
     i.save(picture_path)
     newPic = Image.open(picture_path)
-   
     newPic.save(picture_path)
     return picture_fn
 
