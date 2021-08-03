@@ -3,7 +3,7 @@ import decimal
 import json
 from flask import render_template, url_for, flash, redirect,request,jsonify,Blueprint,session
 from main import app,db,bcrypt,fujs,mail,ALLOWED_EXTENSIONS
-from main.forms import (LoginForm,editUser,addPost,editCategory,RegistrationForm,editPost,SendEmail,RequestResetForm, ResetPassword,ConfirmEmail)
+from main.forms import (addCategory,editCategory,LoginForm,editUser,addPost,editCategory,RegistrationForm,editPost,SendEmail,RequestResetForm, ResetPassword,ConfirmEmail)
 from main.models import User,Images,Category
 from flask_login import current_user,login_user,login_required,logout_user
 from time import localtime,strftime
@@ -41,6 +41,8 @@ def home():
     query = db.session.query(Images)
     users= User.query.all()
     form = SendEmail()
+    categories = Category.query.all()
+
     # Send email from contact form
     if form.validate_on_submit() and request.method=="POST" :
         from_email = form.customer_email.data
@@ -61,7 +63,7 @@ def home():
 
 
 
-    return render_template("main.html", images=images, User=users,contact_form=contact_form)
+    return render_template("main.html", images=images, User=users,contact_form=contact_form,categories=categories)
 @app.route("/login/",methods=["GET","POST"])
 def login():
     form = LoginForm()
@@ -89,6 +91,77 @@ def about():
     return render_template('about.html')
 
 
+@app.route("/add_category/",methods=["GET","POST"])
+def add_category():
+    form = addCategory()
+    if request.method == 'POST':
+            if form.validate_on_submit():
+                title = form.title.data
+                description = form.description.data
+                picture = save_picture(form.picture.data)
+                alt_text = form.alt_text.data
+                category = Category(title=title,description=description,picture=picture,alt_text=alt_text)
+                db.session.add(category)
+                db.session.commit()
+                flash("New category created: {}".format(title), "success")
+            else:
+                flash('Error! Category not added','error')
+    return render_template('add_category.html',form=form)
+def is_filled(data):
+   if data == None:
+      return False
+   if data == '':
+      return False
+   if data == []:
+      return False
+   return True
+@app.route("/edit_category/")
+@app.route("/edit_category/<id>",methods=["GET","POST"])
+def edit_category(id=None):
+    if id == None:
+        flash("No category selected",'error')
+        return redirect(url_for("home"))
+    form = editCategory()
+    category = Category.query.get_or_404(id)
+
+    if request.method == 'GET':
+        form.title.data = category.title
+        form.description.data = category.description
+        form.alt_text.data = category.alt_text
+
+    if request.method == 'POST':
+            if form.validate_on_submit():
+                title = form.title.data
+                description = form.description.data
+                if is_filled(form.picture.data):
+                    picture = save_picture(form.picture.data)
+                else:
+
+                    picture = category.picture
+                alt_text = form.alt_text.data
+                category = Category(title=title,description=description,picture=picture,alt_text=alt_text)
+                db.session.add(category)
+                db.session.commit()
+                flash("Category updated: {}".format(title), "success")
+                return redirect(url_for('home'))
+            else:
+                flash('Error! Category not updated','error')
+    return render_template('edit_category.html',form=form)
+
+@app.route("/delete_category/")
+@app.route("/delete_category/<id>",methods=["GET","POST"])
+def delete_category(id=None):
+    if id == None:
+        flash('Missing image ID','error')
+        return redirect(url_for('home'))
+    Category.query.filter_by(id=id).delete()
+    db.session.commit()
+
+    flash("Congratulations, category deleted", "success")     
+    return redirect(url_for('home'))
+
+
+
 
 @app.route("/gallery/<category>",methods=["GET","POST"])
 @app.route("/gallery/",methods=["GET","POST"])
@@ -109,19 +182,21 @@ def gallery(category = None):
             category = form.category.data
             column = form.column.data
             picture = save_picture(form.picture.data)
+            alt_text = form.alt_text.data
             new_image = Images( title=title,
                                 description = text,
                                 file=picture,
                                 category=category,
+                                alt_text = alt_text,
                                 column = column
                             )
             db.session.add(new_image)
             db.session.commit()
-            flash("New post created: {}".format(title), "success")
+            flash("New photo added : {}".format(title), "success")
             return redirect(url_for("gallery"))
 
         elif form.validate_on_submit()==False:
-            flash("Error! Post not created", "error")
+            flash("Error! Photo not created", "error")
             for fieldName, errorMessages in form.errors.items():
                 for err in errorMessages:
                     print(err)
@@ -147,23 +222,35 @@ def edit_image(id=None):
             form.picture.data = img.file
             form.category.data = img.category  
             form.column.data = img.column
+            form.alt_text.data = img.alt_text
     if request.method =="POST":
         if form.validate_on_submit():
             img.title = form.title.data
             img.description = form.text.data
             img.category = form.category.data
             img.column = form.column.data
+            img.alt_text = form.alt_text.data
             if form.picture.data:
                 img.file = save_picture(form.picture.data)
             db.session.commit()
-            flash("Congratulations, post updated", "success")
+            flash("Congratulations, photo updated", "success")
             return redirect(url_for("gallery"))
         elif form.validate_on_submit()==False:
-            flash("Error! Post not updated", "error")
+            flash("Error! Photo not updated", "error")
             return render_template("edit_img.html", form=form,image=img)
         
     return render_template("edit_img.html", form=form,image=img)
+@app.route("/delete_image/")
+@app.route("/delete_image/<id>",methods=["GET","POST"])
+def delete_image(id=None):
+    if id == None:
+        flash('Missing image ID','error')
+        return redirect(url_for('pictures'))
+    Images.query.filter_by(id=id).delete()
+    db.session.commit()
 
+    flash("Congratulations, post updated", "success")     
+    return redirect(url_for('pictures'))
 
 @app.route("/register/",methods=["GET","POST"])
 def register():
@@ -204,14 +291,17 @@ def logout():
 def admin():
     
     return render_template('admin.html')
+
 @app.route("/pictures/")
 def pictures():
     pictures = Images.query.all()
     return render_template('pictures.html',images=pictures)
+
 @app.route("/users/")
 def users():
     users= User.query.all()
     return render_template('users.html',User=users)
+
 @app.route("/edit_user/",methods=["GET","POST"])    
 @app.route("/edit_user/<id>",methods=["GET","POST"])
 def edit_user(id=None):

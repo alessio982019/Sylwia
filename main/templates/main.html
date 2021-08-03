@@ -4,7 +4,7 @@
 
 <!-- Home -->
   <div class="col-12 pb-5" style='padding-right:0!important;padding-left:0!important ' id='home'>
-    <div class="d-flex align-items-end home-img-container" style='height: 100vh;background-color: transparent;'>
+    <div class="d-flex align-items-end home-img-container justify-content-center" style='height: 100vh;background-color: transparent;'>
       <img src="{{url_for('static',filename='images/logo.png')}}" style='opacity:0.9' id='background-logo' alt=""
         class="img-fluid">
     </div>
@@ -23,101 +23,52 @@
 
 
   <!-- People -->
-  <a href="{{url_for('gallery',category='People')}}">
-    <div id="people-section" class='position-relative text-center gallery-preview  py-5'>
-            <img src="{{ url_for('static',filename='images/people_1.jpg') }}" id='people-img' alt="">
-          
-            <i class="far fa-edit" style='top: 0;
-            transform: translate(-50px, 10px);
-            right: 0;
-            color: black;
-            left: 100;
-            position: absolute;'></i>
-            <div class="centered">
-              <h1>People</h1>
-            </div>
-      <div class="">
-  
-        <p class='px-5'>
-          Business photos focus on the working world, 
-          with imagery being captured to support the growth 
-          and development of a business, usually for marketing 
-          and promotional purposes. By capturing images of the owners, 
-          their products, their teams, or their services, business photography
-          allows companies to tell a story about their offerings through photos.
-        </p>
-      
-      </div>
-      
-      
-    </div>
-  </a>
-<!-- Business -->
-<a href="{{url_for('gallery',category='Business')}}">
-  <div id="business" class='position-relative text-center gallery-preview '>
-    <img src="{{ url_for('static',filename='images/business_1.jpg') }}" id='people-img' alt="">
-    <div class="centered">
-      <h1>Business</h1>
-    </div>
-    <div class="">
- 
-      <p class='px-5'>
-        Business photos focus on the working world, 
-        with imagery being captured to support the growth 
-        and development of a business, usually for marketing 
-        and promotional purposes. By capturing images of the owners, 
-        their products, their teams, or their services, business photography
-         allows companies to tell a story about their offerings through photos.
-      </p>
-    
-    </div>
-  
-  </div>
-</a>
-<!-- Events -->
-<a href="{{url_for('gallery',category='Events')}}">
-  <div id="events" class='position-relative text-center gallery-preview '>
-    <img src="{{ url_for('static',filename='images/event_5.jpg') }}" id='people-img' alt="">
-    <div class="centered">
-      <h1>Events</h1>
-    </div>
-    <div class="">
- 
-      <p class='px-5'>
-        Business photos focus on the working world, 
-        with imagery being captured to support the growth 
-        and development of a business, usually for marketing 
-        and promotional purposes. By capturing images of the owners, 
-        their products, their teams, or their services, business photography
-         allows companies to tell a story about their offerings through photos.
-      </p>
-    
-    </div>
-    
-  </div>
-</a>
-<a href="{{url_for('gallery',category='Food')}}">
-  <div id="food" class='position-relative text-center gallery-preview '>
-    <img src="{{ url_for('static',filename='images/food_5.jpg') }}" id='people-img' alt="">
-    <div class="centered">
-      <h1>Food</h1>
-    </div>
+{% for category in categories %}
 
-    <div class="">
- 
-      <p class='px-5'>
-        Business photos focus on the working world, 
-        with imagery being captured to support the growth 
-        and development of a business, usually for marketing 
-        and promotional purposes. By capturing images of the owners, 
-        their products, their teams, or their services, business photography
-         allows companies to tell a story about their offerings through photos.
-      </p>
+<div id="people-section" class='position-relative text-center gallery-preview  py-5'>
+  <img src="{{ url_for('static',filename='images/' + category.picture ) }}" id='people-img' alt="{{ category.alt_text }}">
+
+{% if current_user.is_authenticated %}
+  <a href="{{url_for('edit_category', id=category.id)}}">
+  <i class="far fa-edit" style='top: 0;
+  transform: translate(-50px, 10px);
+  right: 0;
+  color: black;
+  left: 100;
+  position: absolute;'></i></a>
+
+<a href="{{url_for('delete_category',id=category.id)}}">
+  <i style='top: 0;
+  transform: translate(-10px, 10px);
+  right: 0;
+  color: black;
+  left: 100;
+  position: absolute;' class="far fa-trash-alt"></i></a>
+                 
+
+
+  {% endif %}
+  <!-- <div class="centered">
     
-    </div>
+  </div> -->
+<div class="category-text py-3">
+<h1>{{ category.title  }}</h1>
+<p class='px-3 px-sm-5'>
+{{ category.description  }}
+</p>
+<a href="{{url_for('gallery',category='{{ category.title }}')}}" class="btn btn-black  text-white border-light">See more!</a>
+
+
+</div>
+
+
+</div>
+
+
+
+{% endfor %}
    
-  </div>
-</a>
+
   <!-- End Portfolio -->
 
 

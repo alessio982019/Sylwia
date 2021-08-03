@@ -18,6 +18,7 @@ class RegistrationForm(FlaskForm):
         email_user = User.query.filter_by(email= email.data).first()
         if email_user:
             raise ValidationError('That email is taken, please use a different one!')
+
 class editUser(FlaskForm):
     firstname = StringField('firstname', validators=[DataRequired(),Length(min=2,max=50)])
     lastname = StringField('lastname', validators=[DataRequired(),Length(min=2,max=50)])
@@ -32,12 +33,15 @@ class LoginForm(FlaskForm):
     email = StringField('Email',validators=[DataRequired(),Email()])
     password = PasswordField('Password',validators=[DataRequired()])
     submit = SubmitField('Login')
+
+
 class addPost(FlaskForm):
     title = StringField('Post title',validators=[DataRequired()])
     text = TextAreaField(render_kw={"rows":3, "cols": 4}) 
     picture = FileField('Image', validators=[ FileAllowed(['jpg','png','jpeg'])])
     category = SelectField('Category',validators=[DataRequired()], choices=["Business","People","Food","Events"])
     column = SelectField('Column',validators=[DataRequired()], choices=[1,2,3])
+    alt_text = StringField('Description',validators=[DataRequired()])
     submit = SubmitField('Submit')
     back = SubmitField('Back')
 
@@ -48,16 +52,24 @@ class editPost(FlaskForm):
     picture = FileField('Image', validators=[ FileAllowed(['jpg','png','jpeg'])])
     category = SelectField('Category',validators=[DataRequired()], choices=["Business","People","Food","Events"])
     column = SelectField('Column',validators=[DataRequired()], choices=[1,2,3])
+    alt_text = StringField('Description',validators=[DataRequired()])
     submit = SubmitField('Submit')
     back = SubmitField('Back')
 
 class editCategory(FlaskForm):
-    title = StringField('Post title',validators=[DataRequired()])
-    text = TextAreaField(render_kw={"rows":5, "cols": 4}) 
-    picture = FileField('Image', validators=[ FileAllowed(['jpg','png','jpeg'])])
-    category = SelectField('Category',validators=[DataRequired()], choices=["Business","People","Food","Events"])
-    title = StringField('Post title',validators=[DataRequired()])
+    title = StringField('Category',validators=[DataRequired()])
+    description = TextAreaField(render_kw={"rows":5, "cols": 4},validators=[DataRequired()]) 
+    picture = FileField('Image',validators=[ FileAllowed(['jpg','png','jpeg'])])
+    alt_text = StringField('Description',validators=[DataRequired()])
     submit = SubmitField('Submit')
+
+class addCategory(FlaskForm):
+    title = StringField('Category',validators=[DataRequired()])
+    description = TextAreaField(render_kw={"rows":5, "cols": 4},validators=[DataRequired()]) 
+    picture = FileField('picture',validators=[ FileAllowed(['jpg','png','jpeg'])])
+    alt_text = StringField('Description',validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
 
 
 class SendEmail(FlaskForm):

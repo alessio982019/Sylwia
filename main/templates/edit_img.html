@@ -22,6 +22,14 @@
                 {% endif%}
             </div>
             <div class="form-group my-3">
+              {{ form.alt_text(class="form-input-email w-100", placeholder='Alt text') }}
+                {% if form.alt_text.errors %}
+                  {% for error in form.alt_text.errors %}
+                  <small id="passwordHelp" class="text-danger"><strong>Error: </strong>{{error}} </small>
+                  {% endfor %}
+                {% endif%}
+            </div>
+            <div class="form-group my-3">
                   
               {{ form.text(class="form-input-email w-100", placeholder='Description') }}
                 {% if form.text.errors %}

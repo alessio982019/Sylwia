@@ -44,7 +44,7 @@
 {% if url_for(request.endpoint) == '/gallery/'  %}
 <body style='background-color: white;'>
 {% else %}
-<body style='background: black url("{{url_for("static",filename="images/home-background-2.jpg")}}"); center center no-repeat; 
+<body class='d-flex flex-column min-vh-100' style='background: black url("{{url_for("static",filename="images/home-background-2.jpg")}}"); center center no-repeat; 
 background-repeat: no-repeat;
 background-attachment: fixed;
 background-position: center;
@@ -52,6 +52,8 @@ background-position: center center;
 background-size: cover;'>
   {% endif %}
 
+
+  <header>
   <div class="position-fixed w-100" id='container-nav'>
     {% if url_for(request.endpoint) == '/gallery/'  %}
     <nav class="navbar navbar-expand-lg navbar-dark w-100 px-md-5 px-md-5 px-3  bg-dark" id='navbar-home'>
@@ -133,11 +135,13 @@ background-size: cover;'>
     </nav>
   </div>
 
+</header>
 
 
 
 
 
+<content>
 
 
   <!-- MESSAGES FROM ROUTES -->
@@ -162,8 +166,10 @@ background-size: cover;'>
   {% block content %}
   {% endblock %}
   <!-- Optional JavaScript -->
+</content>
 
-  <footer>
+
+  <footer class='mt-auto'>
 
    <div class="row d-flex justify-content-center px-2 mx-1 border-top border-black pt-5 position-relative" style='background-color: rgba(255, 255, 255, .9);'>
     <div class="col-12 col-sm-8 col-lg-6 col-xl-6  text-dark ">

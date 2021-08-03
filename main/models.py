@@ -34,11 +34,13 @@ class Images(db.Model, UserMixin):
     category = db.Column(db.String(500), nullable=False)
     file = db.Column(db.String(60),nullable=True)
     column = db.Column(db.Integer,nullable=False)
+    alt_text = db.Column(db.Integer,nullable=False)
+
  
 class Category(db.Model):
     id = db.Column(db.Integer,primary_key=True,nullable=False)
     title = db.Column(db.String(60), nullable=False)
     description = db.Column(db.String(200), nullable=False)
-    alt_prop = db.Column(db.String(200), nullable=False)
-    category = db.Column(db.String(500), nullable=False)
-    file = db.Column(db.String(60),nullable=True)
+    picture = db.Column(db.String(60),nullable=False)
+    alt_text = db.Column(db.String(200), nullable=False)
+    
