@@ -13,6 +13,43 @@ nav {
   background-color: transparent;
   z-index: 10;
 }
+
+body{
+    background: black url("/static/images/home-background.jpg")  center center no-repeat;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-position: center center;
+    background-size: cover;
+
+}
+
+
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 600px) {
+
+  #background{
+    background: white url("/static/images/home-background-600.jpg")  center center no-repeat;
+    width:100%;
+    height: 100vh;
+    position: fixed;
+    z-index: -5;
+  }
+body{
+    background: black ;
+
+
+}
+
+.home-img-container img {
+    margin-bottom:10rem;
+}
+}
+
+
+
+
 #container-nav {
   z-index: 10;
 }
@@ -63,7 +100,7 @@ nav {
   padding-bottom: 1rem;
 }
 /* #dropdown-menu a{
-    
+
       color: white!important;
     } */
 .black-text {
@@ -121,9 +158,18 @@ input:focus {
   line-height: 1.5;
   color: #495057;
   background-color: transparent;
-  border-bottom: 1px solid #00000077;
-  border-left: 1px solid #00000077;
-  border-radius: .0rem;
+  border-top: none;
+    border-right: none;
+    border-left: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+#text-form{
+  border-top: none;
+    border-right: none;
+    border-left: 1px solid white;
+    border-bottom: 1px solid white;
+}
 }
 .input {
   position: relative;
@@ -215,7 +261,7 @@ input:focus {
   margin-top: 25rem !important;
 }
 #contact {
-  background-color: rgba(255, 255, 255, .9);
+  background-color: rgba(0,0,0,.75);
   margin-top: 15rem !important;
 }
 #main-external{
@@ -225,7 +271,7 @@ input:focus {
   background-color: rgba(255, 255, 255, 0.75);
   border-radius: 15px;
 }
-/* 
+/*
 #people-img{
   background: black url(../images/people_1.jpg) center center no-repeat;
   background-repeat:no-repeat;
@@ -237,7 +283,7 @@ input:focus {
 
 #cont-background{
   position: absolute;
-  
+
 }
 #container-gallery {
   width: 100%;
@@ -269,7 +315,7 @@ table a {
   color: black;
 }
 form {
-  
+
   color: white;
   color: white;
 }
@@ -281,12 +327,12 @@ textarea {
   background-color: transparent !important;
 }
 
-.form button {}
+
 .form-group:hover {
   transition: border 2s ease;
 }
-#contact-us-title h3 {
-  color: #2c2c2c !important;
+#contact-us-title h3,input,button {
+  color: #d6d6d6 !important;
 }
 #contact-us-title::after {
   display: none !important;
@@ -365,12 +411,12 @@ p {
 }
 .gallery-preview {
   position: relative;
-  
-  
+
+
   text-align: center;
   color: white;
   opacity: 0.9;
- 
+
   margin-top: 7.5rem;
 }
 .gallery-preview img {
@@ -379,14 +425,14 @@ p {
 
 }
 .gallery-preview p{
-  
+
     padding: 1rem;
 }
 .gallery-preview a {
   width: 25%;
-  
+
   background-color: transparent !important;
-  
+
 
   opacity: 0.8;
   font-size: 1.5rem;
@@ -398,7 +444,7 @@ p {
 
 }
 .home-img-container img {
-  
+
 }
 
 #company-name {
@@ -422,7 +468,7 @@ p {
   font-size: 1rem;
 }
 #container-profile {
-  padding-top: 2rem;
+  padding-top: 4rem;
 }
 #add-new-image-link{
   font-size: 2rem;
@@ -497,7 +543,7 @@ nav img{
   padding:2rem;
   border-radius: 50%;
   float: left;
-  
+
 }
 #about-content {
   font-size: .75rem;
@@ -539,7 +585,7 @@ nav img{
               font-size: 1rem;
             }
             .gallery-preview {
-            
+
               margin-top: 10rem;
             }
             .home-img-container img {
@@ -555,7 +601,7 @@ nav img{
               font-size: 1.25rem;
             }
             #container-profile {
-              padding-top: 1rem;
+              padding-top: 5rem;
             }
 
             #edit-img-container{
@@ -564,9 +610,9 @@ nav img{
           }
           .gallery-preview a {
             display: inline-table;
-           
+
             background-color: transparent !important;
-            
+
             opacity: 0.8;
             font-size: 1.5rem;
 }
@@ -599,7 +645,7 @@ nav img{
     -webkit-shape-outside:circle();
   }
   #about-me-gallery{
-    
+
   }
   .gallery-preview p{
     display: block;
@@ -633,7 +679,7 @@ nav img{
   transition: transform .1s;
 }
   #people-img:hover {
-    transform: scale(1.1);
+    transform: scale(1.025);
   }
 @media (min-width: 992px) {
   nav img{
@@ -648,12 +694,12 @@ nav img{
   }
   #about-img {
     width: 50% !important;
-    
+
   }
   .gallery-preview {
-   
+
     margin-top: 20rem;
-    
+
     max-width: 100%;
   }
 
@@ -667,7 +713,7 @@ nav img{
     font-size: 1.5rem;
   }
   #container-profile {
-    padding-top: 1rem;
+    padding-top: 10rem;
   }
 }
 
@@ -692,7 +738,7 @@ nav img{
     font-size: 4rem;
   }
   .gallery-preview {
-   
+
     margin-top: 25rem;
   }
   #company-name {
