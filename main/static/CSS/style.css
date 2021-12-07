@@ -412,7 +412,7 @@ p {
 .gallery-preview {
   position: relative;
 
-
+  background-color: rgba(0,0,0,.75);
   text-align: center;
   color: white;
   opacity: 0.9;
