@@ -4,7 +4,17 @@
 
 <!-- Home -->
   <div class="col-12 pb-5 align-bottom" style='padding-right:0!important;padding-left:0!important ' id='home'>
-    <div class="d-flex align-items-end home-img-container justify-content-center" style='height: 100vh;background-color: transparent;'>
+    <div class="d-flex align-items-center home-img-container justify-content-center" style='height: 100vh;background-color: transparent;'>
+      <div class="text-center">
+        <h1>SMotion Photography</h1>
+        <p class="py-2">Weddings - Events - People - Food</p>
+        <p class="py-2">Warsaw, Poland</p>
+    <div>
+      <a href="#" class="btn btn-black position-relative text-dark">Contact Me</a>
+    </div>
+       
+      </div>
+      
       
     </div>
   </div>
@@ -35,7 +45,7 @@
         {{ category.description  }}
         </p>
         
-        <a href="{{url_for('gallery',category=category.title)}}" class="btn btn-black  text-white border-light">See more!</a>
+        <a href="{{url_for('gallery',category=category.title)}}" class="btn btn-black position-relative text-white border-light">See more!</a>
 
 
       </div>

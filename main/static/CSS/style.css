@@ -32,6 +32,21 @@ body{
   z-index: -5;
 }
 
+
+.home-btn-contact{
+
+  background-color: transparent;
+  border-radius: .25rem;
+  border-style: solid;
+  color: black!important;
+  font-family: 'Montserrat', sans-serif;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+
+
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 600px) {
 
@@ -247,6 +262,18 @@ input:focus {
   box-sizing: border-box;
   color: white;
 }
+.btn:hover:after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 0.175rem;
+  background-color: #cc0102;
+  left: 0px;
+  bottom: 3px;
+  margin: 0 ;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
 #pictures-table {
   background-color: white;
 }
@@ -302,18 +329,7 @@ input:focus {
 #main-content {
   background-color: #ffffff;
 }
-.btn:hover:after {
-  position: absolute;
-  content: '';
-  width: 75%;
-  height: 0.175rem;
-  background-color: #cc0102;
-  left: 0px;
-  bottom: 2px;
-  margin: 0 12.5% 0 12.5%;
-  box-sizing: border-box;
-  transition: 0.3s;
-}
+
 table a {
   color: black;
 }
